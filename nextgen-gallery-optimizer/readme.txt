@@ -1,6 +1,8 @@
 === Plugin Name ===
 Contributors: Mark Jeldi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGS3ANA29BJ2W
+Author URI: http://www.markstechnologynews.com
+Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
 Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery lightbox, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, wordpress optimization
 Requires at least: 3.1.2
 Tested up to: 3.3.1
