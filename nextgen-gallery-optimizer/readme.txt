@@ -6,7 +6,7 @@ Requires at least: 3.1.2
 Tested up to: 3.3.1
 Stable tag: 1.0
 
-NextGEN Gallery Optimizer improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
+Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
 
 == Description ==
 
