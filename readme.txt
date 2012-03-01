@@ -55,7 +55,7 @@ Any version since 1.6.2
 
 = V1.0 - 28/02/2012
 * Initial release on February 28th, 2012.
-
+*
 
 == Upgrade Notice ==
 
