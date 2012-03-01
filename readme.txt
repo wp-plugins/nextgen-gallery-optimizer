@@ -59,6 +59,3 @@ Any version since 1.6.2
 
 
 == Upgrade Notice ==
-
-= 1.0 =
-* Issue regarding upload to WordPress.org repository. Please upgrade to 1.0.1.
