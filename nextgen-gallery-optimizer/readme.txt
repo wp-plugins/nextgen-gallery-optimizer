@@ -16,6 +16,11 @@ NextGEN Gallery Optimizer improves your site's page load speed by ensuring NextG
 
 It also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site! *Requires NextGEN Gallery 1.6.2 and up.
 
+== Key features: ==
+1. Improves your WordPress page load speed!
+2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
+3. Lets you easily install the Fancybox lightbox to display your images in style.
+
 
 == Installation ==
  
@@ -41,23 +46,19 @@ Any version since 1.6.2
 
 == Screenshots ==
 
-1. screenshot-1.png
+1. NextGEN Gallery Optimizer settings page.
 
 
 == Changelog ==
 
 = 1.0 =
-* First version.
+* Initial release on February 28th, 2012.
 
 
 == Upgrade Notice ==
 
 = 1.0 =
-* First version. No upgrades available.
+* Initial release on February 28th, 2012. Upgrades to follow.
 
 
 == Markdown ==
-
-1. Improves your WordPress page load speed!
-2. Prevents NextGEN scripts and styles from loading on posts without galleries.
-3. Lets you easily install the Fancybox lightbox to display your images in style.
