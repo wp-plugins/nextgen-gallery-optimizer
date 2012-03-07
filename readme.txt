@@ -21,8 +21,8 @@ It also includes and integrates the fantastic Fancybox lightbox script, so now y
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
 
-= NEW in Version 1.0.2 =
-
+= NEW in Version 1.0.2: =
+ 
 = Support for WordPress Pages =
 * Display galleries on Posts <i>and Pages</i> in style, but only load code when they're present.
 
