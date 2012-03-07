@@ -1,12 +1,12 @@
-=== Plugin Name ===
+=== NextGEN Gallery Optimizer ===
 Contributors: Mark Jeldi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGS3ANA29BJ2W
 Author URI: http://www.markstechnologynews.com
 Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
-Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery lightbox, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, wordpress optimization
+Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery lightbox, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.1.2
 Tested up to: 3.3.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
 
@@ -21,6 +21,19 @@ It also includes and integrates the fantastic Fancybox lightbox script, so now y
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
 
+= NEW in Version 1.0.2 =
+
+= Support for WordPress Pages =
+* Display galleries on Posts <i>and Pages</i> in style, but only load code when they're present.
+
+= Fancybox overlap fix =
+* Fixes an issue where some page elements overlap Fancybox and prevent the close button from functioning (in particular the title text, header image and menu bar in Twenty Eleven).
+
+= Fix for Fancybox not working in IE6 & IE8 =
+* Automatically updates the Fancybox stylesheet to use the correct file paths.
+
+= Latest JQuery =
+* Fancybox now running on JQuery version 1.7.1 resulting in faster page loads on pages with galleries.
 
 == Installation ==
  
@@ -51,6 +64,16 @@ Any version since 1.6.2
 
 == Changelog ==
 
+= V1.0.2 - 07/03/2012 =
+
+* Added support for WordPress Pages
+
+* Fixed an issue where some page elements overlap Fancybox and prevent the close button from functioning (in particular the title text, header image and menu bar in Twenty Eleven).
+
+* Fixed a surprisingly common issue involving Fancybox not working in IE6 & IE8. My solution was to develop a regular expression that runs on the plugin options page ONLY to write the full urls Microsoft.AlphaImageLoader requires into the static Fancybox stylesheet. Much more efficient than some methods I've seen (such as dynamically rebuilding the stylesheet on every pageview in php).
+
+* Switched JQuery to the latest version 1.7.1 (Google hosted)
+
 = V1.0.1 - 01/03/2012 =
 * Resolved issue regarding upload to WordPress.org repository
 
@@ -59,3 +82,5 @@ Any version since 1.6.2
 
 
 == Upgrade Notice ==
+
+* Upgrade to V1.0.2 recommended for cross-browser support.

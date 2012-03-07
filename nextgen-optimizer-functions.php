@@ -17,7 +17,7 @@ function check_nextgen_shortcode( $shortcode = nggallery ) {
 
 global $nextgen_optimizer_options;
 
-if ( is_single() ) {
+if (!is_admin()) {
     	
 $post = get_post( get_the_ID() );
 
@@ -31,9 +31,9 @@ if(isset($nextgen_optimizer_options['fancybox'])) {
 
 echo '
 <!-- [start nextgen gallery optimizer] This post must contain an image gallery...else we wouldn\'t be serving its scripts and styles! -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="' . plugins_url( 'fancybox/jquery.fancybox-1.3.4.pack.js' , __FILE__) . '"></script>
-<link rel="stylesheet" href="' . plugins_url( 'fancybox/jquery.fancybox-1.3.4.css' , __FILE__) . '" type="text/css" media="screen" />';
+<link rel="stylesheet" href="' . plugins_url( 'css/jquery.fancybox-1.3.4.css' , __FILE__) . '" type="text/css" media="screen" />';
 echo "\n"; ?>
 <script type='text/javascript'>$(document).ready(function() { $("a.myfancybox").fancybox({ 'zoomSpeedIn': 500, 'zoomSpeedOut': 500, 'overlayShow':true,'overlayOpacity':0.3 }); });</script>
 <?php

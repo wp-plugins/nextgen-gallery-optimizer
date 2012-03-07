@@ -4,8 +4,7 @@ Plugin Name: NextGEN Gallery Optimizer
 Description: Optimizes your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode. Also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site!
 Author: Mark Jeldi
 Author URI: http://www.markstechnologynews.com
-Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
-Version: 1.0.1
+Version: 1.0.2
 License: GPL
 */
 
@@ -19,12 +18,16 @@ $nextgen_optimizer_plugin_name = 'NextGEN Gallery Optimizer';
 // retrieve our plugin settings from the options table
 $nextgen_optimizer_options = get_option('nextgen_optimizer_settings');
 
+
+
 /**************************************************
 * includes
 **************************************************/
 
 include('nextgen-optimizer-functions.php'); // plugin functionality
 include('nextgen-optimizer-options.php'); // the plugin options page HTML, linked CSS and save functions
+
+
 
 /**************************************************
 * add options page
@@ -44,6 +47,8 @@ function nextgen_optimizer_add_options_page() {
 // create options page complete with attached css file and link in admin menu. 
 add_action('admin_menu', 'nextgen_optimizer_add_options_page');
 
+
+
 /**************************************************
 * save settings
 **************************************************/
@@ -53,6 +58,8 @@ function nextgen_optimizer_register_settings() {
 	register_setting('nextgen_optimizer_settings_group', 'nextgen_optimizer_settings');
 }
 add_action('admin_init', 'nextgen_optimizer_register_settings');
+
+
 
 /**************************************************
 * add settings & donate links on plugins page
@@ -68,3 +75,54 @@ function nextgen_optimizer_settings_link($links, $file) {
 	return $links;
 }
 add_filter('plugin_row_meta', 'nextgen_optimizer_settings_link', 10, 2);
+
+
+
+/**********************************************************************
+* Fix for Fancybox on IE6 & IE8
+* Microsoft.AlphaImageLoader CSS requires absolute file paths.
+* We'll use regex on plugin options page to save the correct urls.
+**********************************************************************/
+
+if (isset($_GET['page']) && $_GET['page'] == 'nextgen_optimizer_options') {
+
+	// admin error message
+	function nggo_file_not_writable_error() {
+		global $nggo_css_filename;	
+		echo '<div class="error"><p>The file ' . $nggo_css_filename . ' is not writable. Please change its permissions to 766.</p></div>';
+	}
+
+	$nggo_css_filename = WP_PLUGIN_DIR."/nextgen-gallery-optimizer/css/jquery.fancybox-1.3.4.css";
+	$nggo_image_path = plugins_url( 'fancybox/' , __FILE__);
+	$nggo_data = file_get_contents($nggo_css_filename);
+
+	// the regex
+	$nggo_patterns = array();
+	$nggo_patterns[0] = '/\(src=\'(.*?)fancybox\//';
+	$nggo_patterns[1] = '/url\(\'(.*?)fancybox\//';
+	$nggo_replacements = array();
+	$nggo_replacements[0] = '(src=\'' . $nggo_image_path; 
+	$nggo_replacements[1] = 'url(\'' . $nggo_image_path;
+	$nggo_update_css = preg_replace($nggo_patterns, $nggo_replacements, $nggo_data);
+
+	// update css
+	if (is_writable($nggo_css_filename)) {
+
+		if (!$handle = fopen($nggo_css_filename, 'w+')) {
+		add_action( 'admin_notices', 'nggo_file_not_writable_error' );
+		exit;
+    	}
+
+    	if (fwrite($handle, $nggo_update_css) === FALSE) {
+    	add_action( 'admin_notices', 'nggo_file_not_writable_error' );
+		exit;
+		}
+
+	fclose($handle);
+
+	} else {
+	
+	add_action( 'admin_notices', 'nggo_file_not_writable_error' );
+	
+	}
+}

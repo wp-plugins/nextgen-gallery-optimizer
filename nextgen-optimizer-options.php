@@ -10,12 +10,11 @@ ob_start();
 <div class="wrap">
 <h2>NextGEN Gallery Optimizer</h2>
 
-	
 	<div class="nggo_box">	
 		<form method="post" action="options.php">
 		<?php settings_fields('nextgen_optimizer_settings_group'); ?>
 			
-		<div style="padding: 0 0 15px;">
+		<div class="nggo_inner">
 		<h2><?php _e('Step 1:', 'nextgen_optimizer_domain'); ?></h2>
 			
 			<div class="nggo_select_style">
