@@ -3,10 +3,27 @@
 Plugin Name: NextGEN Gallery Optimizer
 Description: Optimizes your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode. Also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site!
 Author: Mark Jeldi
+Version: 1.0.3
+
 Author URI: http://www.markstechnologynews.com
-Version: 1.0.2
-License: GPL
+
+Copyright 2012 Mark Jeldi | mark@markstechnologynews.com
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as 
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
 */
+
 
 /**************************************************
 * global variables
@@ -14,6 +31,9 @@ License: GPL
 
 $nextgen_optimizer_prefix = 'nextgen_optimizer_';
 $nextgen_optimizer_plugin_name = 'NextGEN Gallery Optimizer';
+
+define( 'NGGO_FANCYBOX_VERSION', '1.3.4' );
+define( 'NGGO_JQUERY_VERSION', '1.7.1' );
 
 // retrieve our plugin settings from the options table
 $nextgen_optimizer_options = get_option('nextgen_optimizer_settings');
@@ -26,6 +46,7 @@ $nextgen_optimizer_options = get_option('nextgen_optimizer_settings');
 
 include('nextgen-optimizer-functions.php'); // plugin functionality
 include('nextgen-optimizer-options.php'); // the plugin options page HTML, linked CSS and save functions
+include('nextgen-optimizer-scripts-and-styles.php'); // script and stylesheet include functions
 
 
 

@@ -10,6 +10,7 @@ ob_start();
 <div class="wrap">
 <h2>NextGEN Gallery Optimizer</h2>
 
+
 	<div class="nggo_box">	
 		<form method="post" action="options.php">
 		<?php settings_fields('nextgen_optimizer_settings_group'); ?>
@@ -31,8 +32,8 @@ ob_start();
 			</div>
 			
 			<div class="nggo_custom_style">
-				<b>Or enter the full path to a custom file:</b>
-				<p><input id="nextgen_optimizer_settings[css]" name="nextgen_optimizer_settings[css]" type="text" size="70" value="<?php echo $nextgen_optimizer_options['css']; ?>"/></p>
+				<b>Or enter the path to a custom file:</b>
+				<p><?php echo content_url() ?>/ <input id="nextgen_optimizer_settings[css]" name="nextgen_optimizer_settings[css]" type="text" size="35" value="<?php echo $nextgen_optimizer_options['css']; ?>"/></p>
 			</div>
 			
 		</div>
@@ -40,9 +41,11 @@ ob_start();
 	<div class="clear"></div>
 			
 		<div class="nggo_inner">
-			<h2><?php _e('Step 2:', 'nextgen_optimizer_domain'); ?></h2>
+			<h2><?php _e('Step 2:', 'nggo_domain'); ?></h2>
 			<input id="nextgen_optimizer_settings[fancybox]" name="nextgen_optimizer_settings[fancybox]" type="checkbox" value="1" <?php checked(1, $nextgen_optimizer_options['fancybox']); ?> />
-			&nbsp;&nbsp;<b>Use <a href="http://fancybox.net" target="_blank">Fancybox</a> lightbox effect?</b>&nbsp;<small>To complete the installation, go to Gallery --> Options --> Effects, select <b>Custom</b> and enter: <b>class="myfancybox" rel="%GALLERY_NAME%"</b></small>
+			&nbsp;&nbsp;<b>Use <a href="http://fancybox.net" target="_blank">Fancybox</a> lightbox effect?</b>
+			<br>To complete the installation, go to <b><a href="<?php echo admin_url( 'admin.php?page=nggallery-options#effects' , __FILE__); ?>" target="_blank">Gallery --> Options --> Effects</a></b>, 
+			select <b>Custom</b> and enter: <b>class="myfancybox" rel="%GALLERY_NAME%"</b>
 		</div>
 				
 
@@ -54,11 +57,14 @@ ob_start();
 
 
 	<div class="nggo_box">
-		<h2><?php _e('Tip:', 'nextgen_optimizer_domain'); ?></h2>
-		Lightbox scripts such as Fancybox aren't generally compatible with minification/caching plugins.<br />
-		If you're using a plugin such as WP-Minify, be sure to list <b>wp-content/plugins/nextgen-gallery-optimizer/fancybox/jquery.fancybox-1.3.4.pack.js</b>
+		<h2><?php _e('Tips:', 'nggo_domain'); ?></h2>
+		1. If Fancybox isn't working as it should, try deactivating other Fancybox/lightbox plugins which may be causing a conflict, 
+		and try removing any duplicate Fancybox scripts hard-coded into your theme.<br /><br />
+		
+		2. Lightbox scripts such as Fancybox aren't generally compatible with minification/caching/combining plugins. 
+		If you're using a plugin such as WP-Minify, be sure to list the already minified <b><?php echo plugins_url( 'fancybox/jquery.fancybox-'.NGGO_FANCYBOX_VERSION.'.pack.js' , __FILE__); ?></b>
 		in its file exclusion options and clear the cache.
-	</div>	
+	</div>
 		
 </form>
 
