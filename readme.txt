@@ -24,28 +24,26 @@ It also includes and integrates the fantastic Fancybox lightbox script, so now y
  
  
 = NEW in Version 1.0.3: =
- 
- 
-= Optimized code for improved compatibility =
+
+Optimized code for improved compatibility
 * Results in faster page load times by avoiding duplicate scripts. Also, less chance of conflicts with other plugins.
 
-= Improved settings page =
+Improved settings page
 * Makes setting up Fancybox even easier.
  
  
 = NEW in Version 1.0.2: =
- 
- 
-= Support for WordPress Pages =
+
+Support for WordPress Pages
 * Display galleries on Posts <i>and Pages</i> in style, but only load code when they're present.
 
-= Fancybox overlap fix =
+Fancybox overlap fix
 * Fixes an issue where some page elements overlap Fancybox and prevent the close button from functioning (in particular the title text, header image and menu bar in Twenty Eleven).
 
-= Fix for Fancybox not working in IE6 & IE8 =
+Fix for Fancybox not working in IE6 & IE8
 * Automatically updates the Fancybox stylesheet to use the correct file paths.
 
-= Latest JQuery =
+Latest JQuery
 * Fancybox now running on JQuery version 1.7.1 resulting in faster page loads on pages with galleries.
 
 == Installation ==
@@ -77,7 +75,7 @@ Any version since 1.6.2
 
 == Changelog ==
 
-= V1.0.3 - 09/03/2012
+= V1.0.3 - 09/03/2012 =
 
 * Replaced all hard-coded scripts and styles with WordPress's built-in wp_enqueue_scripts and wp_print_styles functions for better compatibility with other plugins.
 
