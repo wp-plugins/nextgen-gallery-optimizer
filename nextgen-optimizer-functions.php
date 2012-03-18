@@ -18,7 +18,9 @@ add_action('init', 'remove_nextgen_js');
 **********************************************************************/
 
 function remove_nextgen_css() {
-	wp_deregister_style('NextGEN');
+	if (!is_admin()) {
+		wp_deregister_style('NextGEN');
+	}
 }
 add_action('wp_print_styles', 'remove_nextgen_css', 100);
 
@@ -29,7 +31,7 @@ add_action('wp_print_styles', 'remove_nextgen_css', 100);
 **********************************************************************/
 
 function nggo_check_nggallery_shortcode( $shortcode = nggallery ) {
-global $nextgen_optimizer_options;
+global $nggo_options;
 	
 	if (!is_admin()) {
     $post = get_post( get_the_ID() );
@@ -37,8 +39,8 @@ global $nextgen_optimizer_options;
 		// check post content for [nggallery id=x] shortcode 
 		if ( stripos( $post->post_content, '[' . $shortcode ) !== FALSE ) {
  
-			if(isset($nextgen_optimizer_options['fancybox'])) {
-				if($nextgen_optimizer_options['fancybox'] == true) {
+			if (isset($nggo_options['fancybox'])) {
+				if ($nggo_options['fancybox'] == true) {
 					
 					// see scripts-and-styles.php for functions
 					add_action('wp_enqueue_scripts', 'nggo_fancybox_scripts', 999);
@@ -47,24 +49,13 @@ global $nextgen_optimizer_options;
 				}
 			}
 
-			if($nextgen_optimizer_options['css'] != "") {
+			if ($nggo_options['css'] != "") {
 				
 				add_action('wp_print_styles', 'nggo_custom_style', 999); // see scripts-and-styles.php for function 
 	
 			} else {
 
-				$nggo_theme = $nextgen_optimizer_options['theme'];
-
-				if($nggo_theme == "") { }
-				if($nggo_theme == "Black Minimalism Theme") { define( 'NGGO_NEXTGEN_CSS', 'Black_Minimalism.css' ); }
-				if($nggo_theme == "Default Styles") { define( 'NGGO_NEXTGEN_CSS', 'nggallery.css' ); }
-				if($nggo_theme == "Dkret3 Theme") { define( 'NGGO_NEXTGEN_CSS', 'ngg_dkret3.css' ); }
-				if($nggo_theme == "Hovereffect Styles") { define( 'NGGO_NEXTGEN_CSS', 'hovereffect.css' ); }
-				if($nggo_theme == "K2 Theme") { define( 'NGGO_NEXTGEN_CSS', 'ngg_k2.css' ); }
-				if($nggo_theme == "Shadow Effect") { define( 'NGGO_NEXTGEN_CSS', 'ngg_shadow.css' ); }
-				if($nggo_theme == "Shadow Effect with Description Text") { define( 'NGGO_NEXTGEN_CSS', 'ngg_shadow2.css' ); }
-
-				if ($nggo_theme != "") {
+				if ($nggo_options['theme'] != "") {
 					 
 					add_action('wp_print_styles', 'nggo_nextgen_style', 999); // see scripts-and-styles.php for function
 				
@@ -72,6 +63,9 @@ global $nextgen_optimizer_options;
 
 			} // close if/else statement
 		} // close regex
+		
+
+
 	} // close if not admin
 } // close check_nextgen_shortcode function
 

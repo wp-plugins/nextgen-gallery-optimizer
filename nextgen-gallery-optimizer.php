@@ -3,7 +3,7 @@
 Plugin Name: NextGEN Gallery Optimizer
 Description: Optimizes your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode. Also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site!
 Author: Mark Jeldi
-Version: 1.0.3
+Version: 1.0.4
 
 Author URI: http://www.markstechnologynews.com
 
@@ -29,14 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 * global variables
 **************************************************/
 
-$nextgen_optimizer_prefix = 'nextgen_optimizer_';
-$nextgen_optimizer_plugin_name = 'NextGEN Gallery Optimizer';
+$nggo_options = get_option('nextgen_optimizer_settings');
 
 define( 'NGGO_FANCYBOX_VERSION', '1.3.4' );
 define( 'NGGO_JQUERY_VERSION', '1.7.1' );
-
-// retrieve our plugin settings from the options table
-$nextgen_optimizer_options = get_option('nextgen_optimizer_settings');
 
 
 
@@ -147,3 +143,85 @@ if (isset($_GET['page']) && $_GET['page'] == 'nextgen_optimizer_options') {
 	
 	}
 }
+
+
+
+/**********************************************************************
+* define default option settings on first activation
+**********************************************************************/
+
+function nggo_add_default_values() {
+	
+	// global $nggo_options doesn't work here. Maybe too early?
+	$nggo_options = get_option('nextgen_optimizer_settings'); 
+    	
+    if (!is_array($nggo_options)) {  // set defaults for new users only
+		
+		$nggo_default_values = array(
+				"theme" => "Default Styles",
+				"css" => "",
+				"fancybox" => "",
+				"do_redirect" => "yes",
+				"show_message" => "yes"
+				);
+				
+		update_option('nextgen_optimizer_settings', $nggo_default_values);
+		
+	}
+}
+register_activation_hook(__FILE__, 'nggo_add_default_values');
+
+
+
+/**********************************************************************
+* redirect users to settings page on first activation
+**********************************************************************/
+
+function nggo_redirect_to_settings() {
+
+    global $nggo_options;
+		
+	if (isset($nggo_options['do_redirect']) && ($nggo_options['do_redirect'] == 'yes')) {
+        	        	
+        wp_redirect(admin_url('options-general.php?page=nextgen_optimizer_options', __FILE__));
+			
+		// we only want to redirect to the settings page on first activation
+		// so we'll update the value of "do_redirect" to "no"
+
+		$nggo_options['do_redirect'] = 'no'; // amend value in array
+		update_option('nextgen_optimizer_settings', $nggo_options); // update option array
+
+	}		
+}
+add_action('admin_init', 'nggo_redirect_to_settings');
+
+
+
+/**********************************************************************
+* display thank you message on first activation
+**********************************************************************/
+
+function nggo_thanks_for_downloading() {
+	
+	if (isset($_GET['page']) && $_GET['page'] == 'nextgen_optimizer_options') {
+		
+		global $nggo_options;
+
+    	if (isset($nggo_options['show_message']) && ($nggo_options['show_message'] == 'yes')) {
+        	        	
+			echo '
+			<div id="message" class="updated">
+			<p>Thanks for downloading NextGEN Gallery Optimizer! Please review the steps below to complete the installation.</p>
+			</div>
+			';
+			
+			// we only want to show this message once on first activation
+			// so we'll update the value of "show_message" to "no"
+
+			$nggo_options['show_message'] = 'no'; // amend value in array
+			update_option('nextgen_optimizer_settings', $nggo_options); // update option array
+	
+		}
+	}		
+}
+add_action('admin_notices', 'nggo_thanks_for_downloading');

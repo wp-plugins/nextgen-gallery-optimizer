@@ -46,8 +46,8 @@ function nggo_fancybox_scripts() {
 **********************************************************************/
 
 function nggo_custom_style() {
-	global $nextgen_optimizer_options;
-	wp_register_style('custom.css', content_url($nextgen_optimizer_options['css'], dirname(__FILE__)), false, null, 'screen');
+	global $nggo_options;
+	wp_register_style('custom.css', content_url($nggo_options['css'], dirname(__FILE__)), false, null, 'screen');
 	wp_enqueue_style('custom.css');
 }
 
@@ -57,9 +57,19 @@ function nggo_custom_style() {
 * nextgen gallery's styles (as selected on settings page)
 **********************************************************************/
 
+global $nggo_options;
+$nggo_theme = $nggo_options['theme'];
+
+if($nggo_theme == "") { }
+if($nggo_theme == "Black Minimalism Theme") { define( 'NGGO_NEXTGEN_CSS', 'Black_Minimalism.css' ); }
+if($nggo_theme == "Default Styles") { define( 'NGGO_NEXTGEN_CSS', 'nggallery.css' ); }
+if($nggo_theme == "Dkret3 Theme") { define( 'NGGO_NEXTGEN_CSS', 'ngg_dkret3.css' ); }
+if($nggo_theme == "Hovereffect Styles") { define( 'NGGO_NEXTGEN_CSS', 'hovereffect.css' ); }
+if($nggo_theme == "K2 Theme") { define( 'NGGO_NEXTGEN_CSS', 'ngg_k2.css' ); }
+if($nggo_theme == "Shadow Effect") { define( 'NGGO_NEXTGEN_CSS', 'ngg_shadow.css' ); }
+if($nggo_theme == "Shadow Effect with Description Text") { define( 'NGGO_NEXTGEN_CSS', 'ngg_shadow2.css' ); }
+
 function nggo_nextgen_style() {
-	global $nextgen_optimizer_options;
-	global $nggo_css;
 	wp_register_style('nextgen.css', plugins_url( 'nextgen-gallery/css/' .NGGO_NEXTGEN_CSS. '' , dirname(__FILE__)), false, null, 'screen');
 	wp_enqueue_style('nextgen.css');
 }

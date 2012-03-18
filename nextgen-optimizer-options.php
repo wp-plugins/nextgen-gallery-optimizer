@@ -2,7 +2,8 @@
 
 function nextgen_optimizer_options_page() {
 
-global $nextgen_optimizer_options;
+global $nggo_options;
+
 ob_start();
 
 ?>
@@ -24,7 +25,7 @@ ob_start();
 					<?php $styles = array('','Black Minimalism Theme', 'Default Styles', 'Dkret3 Theme', 'Hovereffect Styles', 'K2 Theme', 'Shadow Effect', 'Shadow Effect with Description Text'); ?>
 					<select name="nextgen_optimizer_settings[theme]" id="nextgen_optimizer_settings[theme]">
 						<?php foreach($styles as $style) { ?>
-							<?php if($nextgen_optimizer_options['theme'] == $style) { $selected = 'selected="selected"'; } else { $selected = ''; } ?>
+							<?php if ($nggo_options['theme'] == $style) { $selected = 'selected="selected"'; } else { $selected = ''; } ?>
 							<option value="<?php echo $style; ?>" <?php echo $selected; ?>><?php echo $style; ?></option>
 						<?php } ?>
 					</select>
@@ -33,7 +34,7 @@ ob_start();
 			
 			<div class="nggo_custom_style">
 				<b>Or enter the path to a custom file:</b>
-				<p><?php echo content_url() ?>/ <input id="nextgen_optimizer_settings[css]" name="nextgen_optimizer_settings[css]" type="text" size="35" value="<?php echo $nextgen_optimizer_options['css']; ?>"/></p>
+				<p><?php echo content_url() ?>/ <input id="nextgen_optimizer_settings[css]" name="nextgen_optimizer_settings[css]" type="text" size="35" value="<?php echo $nggo_options['css']; ?>"/></p>
 			</div>
 			
 		</div>
@@ -42,7 +43,7 @@ ob_start();
 			
 		<div class="nggo_inner">
 			<h2><?php _e('Step 2:', 'nggo_domain'); ?></h2>
-			<input id="nextgen_optimizer_settings[fancybox]" name="nextgen_optimizer_settings[fancybox]" type="checkbox" value="1" <?php checked(1, $nextgen_optimizer_options['fancybox']); ?> />
+			<input id="nextgen_optimizer_settings[fancybox]" name="nextgen_optimizer_settings[fancybox]" type="checkbox" value="1" <?php checked(1, $nggo_options['fancybox']); ?> />
 			&nbsp;&nbsp;<b>Use <a href="http://fancybox.net" target="_blank">Fancybox</a> lightbox effect?</b>
 			<br>To complete the installation, go to <b><a href="<?php echo admin_url( 'admin.php?page=nggallery-options#effects' , __FILE__); ?>" target="_blank">Gallery --> Options --> Effects</a></b>, 
 			select <b>Custom</b> and enter: <b>class="myfancybox" rel="%GALLERY_NAME%"</b>
@@ -94,7 +95,7 @@ ob_start();
 	<div class="nggo_box">
 		<h2>Support:</h2>
 		Any questions or suggestions?<br />
-		Please leave a message at the <a href="http://wordpress.org/tags/nextgen-gallery-optimizer?forum_id=10">Support Forum</a>.
+		Please <a href='mailto:mark@markstechnologynews.com'>send me an email</a>, or leave a message at the <a href="http://wordpress.org/tags/nextgen-gallery-optimizer?forum_id=10">Support Forum</a>.
 	</div>
 		
 </div><!-- end wrap -->
