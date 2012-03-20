@@ -12,6 +12,64 @@ ob_start();
 <h2>NextGEN Gallery Optimizer</h2>
 
 
+	<div class="nggo_premium_box">
+		<h2>New!...NextGEN Gallery Optimizer <i>Premium!</i></h2>
+
+		<h3 class="nggo_h3">Support for ALL TEN NextGEN shortcodes</h3>
+		
+		<div style="float:left; width:300px;">
+		<p>
+		<b>
+		1. [nggallery id=x]<br />
+		2. [slideshow id=x]<br />
+		3. [album id=x]<br />
+		4. [thumb id=x]<br />
+		5. [singlepic id=x]<br />
+		6. [imagebrowser id=x]<br />
+		7. [nggtags gallery|album=mytag]<br />
+		8. [random max=x]<br />
+		9. [recent max=x]<br />
+		10. [tagcloud]
+		</b>
+		</p>
+		</div>
+
+		<div style="float:left;">
+		<p>
+		<b>+ Support for the [Show as slideshow] link</b><br />
+		Load slideshow scripts...and ONLY after click-through.
+		</p>
+
+		<p>
+		<b>+ Precision targeting for shortcode SUB-pages</b><br />
+		Only load the scripts required on each and every view.
+		</p>
+
+		<p>
+		<b>+ Removes NextGEN Gallery's version number</b><br />
+		Less source code comment clutter behind every page.
+		</p>
+		</div>
+		
+		<div class="clear"></div>
+
+		<div class="nggo_premium_download">
+		<?php echo '
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+		<input id="nggo_premium_input" type="hidden" name="cmd" value="_s-xclick">
+		<input id="nggo_premium_input" type="hidden" name="hosted_button_id" value="GDFJ6B9CKNPHN">
+		<input id="nggo_premium_input" type="image" src="' . plugins_url( 'images/download-button.gif' , __FILE__) . '" width="150" height="26" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+		<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+		</form>
+		'; ?>
+		</div>
+
+		<small>*$5 donation required.</small>
+		
+	</div>
+
+
+
 	<div class="nggo_box">	
 		<form method="post" action="options.php">
 		<?php settings_fields('nextgen_optimizer_settings_group'); ?>

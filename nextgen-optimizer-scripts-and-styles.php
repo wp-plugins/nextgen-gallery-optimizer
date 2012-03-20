@@ -16,7 +16,7 @@ function nggo_fancybox_style() {
 **********************************************************************/
 
 function nggo_fancybox_inline_js() { ?>
-<!-- [nextgen gallery optimizer] This post must contain an image gallery...else we wouldn't be serving its scripts and styles -->
+<!-- [nextgen gallery optimizer] This page must contain a nextgen shortcode...else we wouldn't be serving its scripts and styles -->
 <script type='text/javascript'>$(document).ready(function() { $('a.myfancybox').fancybox({ 'zoomSpeedIn': 500, 'zoomSpeedOut': 500, 'overlayShow':true,'overlayOpacity':0.3 }); });</script>
 <?php
 }
@@ -24,14 +24,22 @@ function nggo_fancybox_inline_js() { ?>
 
 
 /**********************************************************************
-* jquery & fancybox
-* + deregister other versions when we serve them to avoid conflicts
+* jquery + deregister duplicates when served to avoid conflicts
 **********************************************************************/
 
-function nggo_fancybox_scripts() {
+function nggo_load_jquery() {
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/'.NGGO_JQUERY_VERSION.'/jquery.min.js', false, NGGO_JQUERY_VERSION);
 	wp_enqueue_script('jquery');
+}
+
+
+
+/**********************************************************************
+* fancybox + deregister duplicates when served to avoid conflicts
+**********************************************************************/
+
+function nggo_load_fancybox() {
 	wp_deregister_script('fancybox');
 	wp_deregister_script('jquery.fancybox');
 	wp_deregister_script('jquery-fancybox');
@@ -70,6 +78,6 @@ if($nggo_theme == "Shadow Effect") { define( 'NGGO_NEXTGEN_CSS', 'ngg_shadow.css
 if($nggo_theme == "Shadow Effect with Description Text") { define( 'NGGO_NEXTGEN_CSS', 'ngg_shadow2.css' ); }
 
 function nggo_nextgen_style() {
-	wp_register_style('nextgen.css', plugins_url( 'nextgen-gallery/css/' .NGGO_NEXTGEN_CSS. '' , dirname(__FILE__)), false, null, 'screen');
+	wp_register_style('nextgen.css', plugins_url( 'nextgen-gallery/css/'.NGGO_NEXTGEN_CSS.'' , dirname(__FILE__)), false, null, 'screen');
 	wp_enqueue_style('nextgen.css');
 }

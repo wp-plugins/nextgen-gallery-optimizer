@@ -3,7 +3,7 @@
 Plugin Name: NextGEN Gallery Optimizer
 Description: Optimizes your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode. Also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site!
 Author: Mark Jeldi
-Version: 1.0.4
+Version: 1.0.5
 
 Author URI: http://www.markstechnologynews.com
 

@@ -3,20 +3,30 @@ Contributors: Mark Jeldi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGS3ANA29BJ2W
 Author URI: http://www.markstechnologynews.com
 Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
-Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery lightbox, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
+Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.1.2
 Tested up to: 3.3.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 
 Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
 
 == Description ==
 
-NextGEN Gallery Optimizer improves your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode.
+= NextGEN Gallery Optimizer =
+
+Improves your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode.
 
 It also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site! *Requires NextGEN Gallery 1.6.2 and up.
 
-Please note: The plugin currently only supports the [nggallery id=x] shortcode...though others are on the way!
+Please note: This basic version currently only supports the **[nggallery id=x]** shortcode.
+
+= NextGEN Gallery Optimizer *Premium* =
+
+Builds on the basic version and adds support for ALL TEN of NextGen’s shortcodes including **[nggallery id=x]**, **[slideshow id=x]**, **[album id=x]**, **[thumb id=x]**, **[singlepic id=x]**, **[imagebrowser id=x]**, **[nggtags gallery|album=mytag]**, **[random max=x]**, **[recent max=x]** and **[tagcloud]**.
+
+It also adds support for the **[Show as slideshow]** link (loading slideshow scripts only after a user clicks-through), precision targeting for **shortcode SUB-pages** (ensuring we only load the scripts we need on each view) and also **removes NextGEN's version number comment** (for less clutter behind every page).
+
+This donation-based version is available from the plugin settings page, [or can be downloaded here](http://www.markstechnologynews.com/nextgen-gallery-optimizer-premium).
 
 If you have any questions, suggestions, ideas or feedback, please email me at mark@markstechnologynews.com
 
@@ -24,6 +34,17 @@ If you have any questions, suggestions, ideas or feedback, please email me at ma
 1. Improves your WordPress page load speed!
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
+
+= NEW in Version 1.0.5: =
+
+1. Precision matching with WordPress's built-in shortcode finder.
+2. NextGEN Gallery Optimizer *Premium* (an optional upgrade for a small donation).
+
+
+This version uses WordPress's native get_shortcode_regex() function for EXACT shortcode matching, ensuring scripts and styles don't load unexpectedly unless the FULL shortcode is present. If WordPress doesn't detect a shortcode, neither do we!
+
+Also, this update introduces the new NextGEN Gallery Optimizer *Premium* version, which adds support for ALL TEN of NextGen’s shortcodes, support for the [show as slideshow] link, the removal of NextGEN’s version number comment and more.
+
 
 = NEW in Version 1.0.4: =
 
@@ -54,7 +75,7 @@ It also fixes an issue where some page elements overlap Fancybox and prevent the
 It fixes the "Fancybox not working in IE6 & IE8" issue by automatically updating the Fancybox stylesheet to use the correct file paths, and we're now running Fancybox on  JQuery version 1.7.1, resulting in faster page loads where galleries are present.
 
 == Installation ==
- 
+
 1. Upload `nextgen-gallery-optimizer` to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Proceed to the plugin settings page to complete installation.
@@ -62,9 +83,11 @@ It fixes the "Fancybox not working in IE6 & IE8" issue by automatically updating
 
 == Frequently Asked Questions ==
 
+= Basic Version =
+
 = Wait...my galleries are displaying in a vertical line! =
 
-Please make sure you've selected a stylesheet on the (NextGEN Optimizer) settings page, and that you're using the [nggallery id=x] shortcode in your posts. This is the only supported shortcode presently, though others will be on the way shortly.
+Please make sure you've selected a stylesheet on the (NextGEN Optimizer) settings page, and that you're using the [nggallery id=x] shortcode in your posts. This is the only supported shortcode in the basic version presently.
 
 
 = My image thumbnails are clicking-through to an image URL! Where did the lightbox go? =
@@ -77,6 +100,19 @@ To set up Fancybox, please check it's checkbox on the (NextGEN Optimizer) settin
 
 This will integrate the Fancybox lightbox with NextGEN Gallery on your [nggallery id=x] shortcodes instead of directing you to the image URL.
 
+
+= Premium Version =
+
+= Why won't my images click-through to a gallery on my [album id=x] shortcodes? =
+
+It looks as though there may be a bug with one of NextGEN's settings. Go to Gallery --> Options --> Gallery Settings and make sure the first option "Deactivate gallery page link" is checked (as it is by default).
+
+= I've just added a gallery to an album in NextGEN and I get a "Notice: Undefined property: stdClass::$gallery_ids" error message on my page. =
+
+The drag-and-drop "Manage Albums" page in NextGEN does not auto-save like the WordPress widgets page. Click the "Update" button and your albums will display as they should.
+
+
+= General =
 
 = Is this plugin compatible with minification/caching tools? =
 
@@ -99,6 +135,18 @@ Any version since 1.6.2
 
 == Changelog ==
 
+= V1.0.5 - 20/03/2012 =
+
+* Replaced my shortcode regex with WordPress's native get_shortcode_regex() function for more precise matching.
+
+* Added a pre-emptive fix to solve a common problem where jQuery dependent scripts (such as Fancybox and NextGEN's slideshow) break if jQuery doesn't load first. Added array('jquery') dependencies to wp_register_script calls (which forces jQuery to not only load when these scripts are called, but load first), as well as add_action priority values to influence their order.
+
+* Launched my new NextGEN Gallery Optimizer *Premium* version which supports ALL TEN of NextGen’s shortcodes, supports the [show as slideshow] link, adds targeting for shortcode sub-pages (eg. stylesheet only on album page / both styles and scripts (if selected) on album GALLERY pages) and adds the removal of NextGEN’s version number comment.
+
+* Added promotional box to the basic version's settings page.
+
+
+
 = V1.0.4 - 18/03/2012 =
 
 * Added an automatic redirect that sends first time users to the plugin options page on first activation.
@@ -114,6 +162,8 @@ database options.
 
 * Moved the stylesheet dropdown if statements to scripts-and-styles.php to keep them together with their register and enqueue calls.
 
+
+
 = V1.0.3 - 09/03/2012 =
 
 * Replaced all hard-coded scripts and styles with WordPress's built-in wp_enqueue_scripts and wp_print_styles functions for better compatibility with other plugins.
@@ -121,6 +171,8 @@ database options.
 * Added several instances of wp_deregister_script to pages we're serving jquery and jquery.fancybox.js on. This will prevent conflicts (and page load overhead) if any other installed plugins try to serve duplicate scripts.
 
 * Added /wp-content/ url prefix to custom css input box on the settings page. Also made the Fancybox installation instructions clearer with larger text, a link to the NextGEN Effects page, and extra advice in the Tips section on plugin conflicts.
+
+
 
 = V1.0.2 - 07/03/2012 =
 
@@ -132,14 +184,19 @@ database options.
 
 * Switched JQuery to the latest version 1.7.1 (Google hosted)
 
+
+
 = V1.0.1 - 01/03/2012 =
 * Resolved issue regarding upload to WordPress.org repository
+
+
 
 = V1.0 - 28/02/2012 =
 * Initial release on February 28th, 2012.
 
 
 == Upgrade Notice ==
+= Upgrade to V1.0.5 is recommended for more accurate shortcode detection. =
 = Upgrade to V1.0.4 is non-essential. Adds features to assist new users in getting set up. =
 = Upgrade to V1.0.3 recommended for improved compatibility with other plugins. =
 = Upgrade to V1.0.2 recommended for cross-browser support. =
