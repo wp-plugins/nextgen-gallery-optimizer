@@ -22,7 +22,7 @@ Please note: This basic version currently only supports the **[nggallery id=x]**
 
 = NextGEN Gallery Optimizer *Premium* =
 
-Builds on the basic version and adds support for ALL TEN of NextGen’s shortcodes including **[nggallery id=x]**, **[slideshow id=x]**, **[album id=x]**, **[thumb id=x]**, **[singlepic id=x]**, **[imagebrowser id=x]**, **[nggtags gallery|album=mytag]**, **[random max=x]**, **[recent max=x]** and **[tagcloud]**.
+Builds on the basic version and adds support for ALL TEN of NextGen's shortcodes including **[nggallery id=x]**, **[slideshow id=x]**, **[album id=x]**, **[thumb id=x]**, **[singlepic id=x]**, **[imagebrowser id=x]**, **[nggtags gallery|album=mytag]**, **[random max=x]**, **[recent max=x]** and **[tagcloud]**.
 
 It also adds support for the **[Show as slideshow]** link (loading slideshow scripts only after a user clicks-through), precision targeting for **shortcode SUB-pages** (ensuring we only load the scripts we need on each view) and also **removes NextGEN's version number comment** (for less clutter behind every page).
 
@@ -43,7 +43,7 @@ If you have any questions, suggestions, ideas or feedback, please email me at ma
 
 This version uses WordPress's native get_shortcode_regex() function for EXACT shortcode matching, ensuring scripts and styles don't load unexpectedly unless the FULL shortcode is present. If WordPress doesn't detect a shortcode, neither do we!
 
-Also, this update introduces the new NextGEN Gallery Optimizer *Premium* version, which adds support for ALL TEN of NextGen’s shortcodes, support for the [show as slideshow] link, the removal of NextGEN’s version number comment and more.
+Also, this update introduces the new NextGEN Gallery Optimizer *Premium* version, which adds support for ALL TEN of NextGen's shortcodes, support for the [show as slideshow] link, the removal of NextGEN's version number comment and more.
 
 
 = NEW in Version 1.0.4: =
@@ -84,7 +84,7 @@ It fixes the "Fancybox not working in IE6 & IE8" issue by automatically updating
 == Frequently Asked Questions ==
 
 = Basic Version =
-
+ 
 = Wait...my galleries are displaying in a vertical line! =
 
 Please make sure you've selected a stylesheet on the (NextGEN Optimizer) settings page, and that you're using the [nggallery id=x] shortcode in your posts. This is the only supported shortcode in the basic version presently.
@@ -102,7 +102,7 @@ This will integrate the Fancybox lightbox with NextGEN Gallery on your [nggaller
 
 
 = Premium Version =
-
+ 
 = Why won't my images click-through to a gallery on my [album id=x] shortcodes? =
 
 It looks as though there may be a bug with one of NextGEN's settings. Go to Gallery --> Options --> Gallery Settings and make sure the first option "Deactivate gallery page link" is checked (as it is by default).
@@ -113,7 +113,7 @@ The drag-and-drop "Manage Albums" page in NextGEN does not auto-save like the Wo
 
 
 = General =
-
+ 
 = Is this plugin compatible with minification/caching tools? =
 
 Yes. However the small, already minified Fancybox script must be excluded from combining/minification or it won't function. This is true of any lightbox script.
@@ -141,7 +141,7 @@ Any version since 1.6.2
 
 * Added a pre-emptive fix to solve a common problem where jQuery dependent scripts (such as Fancybox and NextGEN's slideshow) break if jQuery doesn't load first. Added array('jquery') dependencies to wp_register_script calls (which forces jQuery to not only load when these scripts are called, but load first), as well as add_action priority values to influence their order.
 
-* Launched my new NextGEN Gallery Optimizer *Premium* version which supports ALL TEN of NextGen’s shortcodes, supports the [show as slideshow] link, adds targeting for shortcode sub-pages (eg. stylesheet only on album page / both styles and scripts (if selected) on album GALLERY pages) and adds the removal of NextGEN’s version number comment.
+* Launched my new NextGEN Gallery Optimizer *Premium* version which supports ALL TEN of NextGen's shortcodes, supports the [show as slideshow] link, adds targeting for shortcode sub-pages (eg. stylesheet only on album page / both styles and scripts (if selected) on album GALLERY pages) and adds the removal of NextGEN's version number comment.
 
 * Added promotional box to the basic version's settings page.
 
@@ -200,3 +200,4 @@ database options.
 = Upgrade to V1.0.4 is non-essential. Adds features to assist new users in getting set up. =
 = Upgrade to V1.0.3 recommended for improved compatibility with other plugins. =
 = Upgrade to V1.0.2 recommended for cross-browser support. =
+ 
