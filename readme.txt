@@ -6,7 +6,7 @@ Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer
 Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.1.2
 Tested up to: 3.3.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 
 Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
 
@@ -16,7 +16,7 @@ Improves your site's page load speed by preventing NextGEN's scripts & css from 
 
 Improves your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode.
 
-It also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site! *Requires NextGEN Gallery 1.6.2 and up.
+It also includes and *automatically*-integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site! *Requires NextGEN Gallery 1.6.2 and up.
 
 Please note: This basic version currently only supports the **[nggallery id=x]** shortcode.
 
@@ -34,6 +34,14 @@ If you have any questions, suggestions, ideas or feedback, please email me at ma
 1. Improves your WordPress page load speed!
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
+
+= NEW in Version 1.0.6: =
+
+1. Fully-automated Fancybox installation! (Basic and Premium)
+
+
+This version features completely automated Fancybox integration with NextGEN Gallery, so now you can be up and running even faster.
+
 
 = NEW in Version 1.0.5: =
 
@@ -111,6 +119,20 @@ It looks as though there may be a bug with one of NextGEN's settings. Go to Gall
 
 The drag-and-drop "Manage Albums" page in NextGEN does not auto-save like the WordPress widgets page. Click the "Update" button and your albums will display as they should.
 
+= Help! My slideshows aren't working...they just show a rotating loading circle. =
+
+Please go to GALLERY -> MANAGE GALLERY and select the gallery that's causing you trouble. Inside this gallery, ensure ALL image thumbnails are displaying and re-upload them if necessary. If they're missing, the "Path" field may have been changed, which will cause the slideshow to break.
+
+= Why doesn't Optimizer support NextGEN widgets? =
+
+After spending weeks working on integrating this, I've discovered it's not presently possible in WordPress to:
+
+1. Conditionally load the required scripts in the header AND
+
+2. ONLY load them if the widget is actually present on the page.
+
+Since both the Fancybox and the NextGEN slideshow scripts must be loaded in the head section of the page so they don't break, and since the whole point of this plugin is to NOT load scripts on every page, I've had to abandon this idea for the time being. If you know of a solution, do let me know and I'll add it in the next version!
+
 
 = General =
  
@@ -134,6 +156,24 @@ Any version since 1.6.2
 
 
 == Changelog ==
+
+= V1.0.6 - 04/04/2012 =
+
+* Installation of Fancybox is now fully automated and set by default.
+The plugin saves a copy of existing settings on the Gallery --> Options --> Effects page, then updates them with the Fancybox code so we don't have to enter it manually.
+Any changes to this code are then overridden as long as the Fancybox option on the settings page is checked. This helps prevent accidental changes that would break integration. A safety switch, if you will.
+There's also an admin message that prompts users to uncheck the Fancybox setting on the options page if they want to use another custom lightbox/effect.
+On deactivation, Optimizer will attempt to restore the former values...but only if Fancybox is selected (don't want to write over newer custom values!)
+
+* Removed installation instructions from the options pages as, well, we don't need them anymore.
+
+* After discovering WordPress's auto-update downloads the full version of the plugin (not just the files that have changed), and with no way to redirect back to the plugin settings page from the upgrade page, I've set the Fancybox stylesheet regex to run on admin_init instead. Since we only want it to run once (on first activation and after auto-update), I've defined a version number in the code and added a "version" option to the settings array to check against.
+
+* Added (if !defined()) to skip_load_scripts to avoid possible error messages when both basic and premium versions of the plugin are installed.
+
+* Added extra fields to the options page for persistent plugin settings.
+
+
 
 = V1.0.5 - 20/03/2012 =
 
@@ -196,6 +236,7 @@ database options.
 
 
 == Upgrade Notice ==
+= Upgrade to V1.0.6 is recommended for a number of coding improvements. =
 = Upgrade to V1.0.5 is recommended for more accurate shortcode detection. =
 = Upgrade to V1.0.4 is non-essential. Adds features to assist new users in getting set up. =
 = Upgrade to V1.0.3 recommended for improved compatibility with other plugins. =

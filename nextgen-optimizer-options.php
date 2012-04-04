@@ -103,8 +103,6 @@ ob_start();
 			<h2><?php _e('Step 2:', 'nggo_domain'); ?></h2>
 			<input id="nextgen_optimizer_settings[fancybox]" name="nextgen_optimizer_settings[fancybox]" type="checkbox" value="1" <?php checked(1, $nggo_options['fancybox']); ?> />
 			&nbsp;&nbsp;<b>Use <a href="http://fancybox.net" target="_blank">Fancybox</a> lightbox effect?</b>
-			<br>To complete the installation, go to <b><a href="<?php echo admin_url( 'admin.php?page=nggallery-options#effects' , __FILE__); ?>" target="_blank">Gallery --> Options --> Effects</a></b>, 
-			select <b>Custom</b> and enter: <b>class="myfancybox" rel="%GALLERY_NAME%"</b>
 		</div>
 				
 
@@ -124,7 +122,13 @@ ob_start();
 		If you're using a plugin such as WP-Minify, be sure to list the already minified <b><?php echo plugins_url( 'fancybox/jquery.fancybox-'.NGGO_FANCYBOX_VERSION.'.pack.js' , __FILE__); ?></b>
 		in its file exclusion options and clear the cache.
 	</div>
-		
+
+	<!-- hidden fields for persistent settings in options array -->
+	<input id="nextgen_optimizer_settings[version]" name="nextgen_optimizer_settings[version]" type="hidden" value="<?php echo $nggo_options['version']; ?>"/>
+	<input id="nextgen_optimizer_settings[original_nextgen_thumbEffect]" name="nextgen_optimizer_settings[original_nextgen_thumbEffect]" type="hidden" value="<?php echo $nggo_options['auto_fancybox_install']; ?>"/>	
+	<input id="nextgen_optimizer_settings[original_nextgen_thumbEffect]" name="nextgen_optimizer_settings[original_nextgen_thumbEffect]" type="hidden" value="<?php echo $nggo_options['original_nextgen_thumbEffect']; ?>"/>
+	<input id="nextgen_optimizer_settings[original_nextgen_thumbCode]" name="nextgen_optimizer_settings[original_nextgen_thumbCode]" type="hidden" value="<?php echo htmlspecialchars($nggo_options['original_nextgen_thumbCode']); ?>"/>
+	
 </form>
 
 		

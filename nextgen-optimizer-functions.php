@@ -4,12 +4,14 @@
 * remove nextgen gallery scripts [works on nextgen 1.6.2 and above]
 **********************************************************************/
 
-function remove_nextgen_js() {
+function nggo_remove_nextgen_js() {
 	if (!is_admin()) {
+		if (!defined('NGG_SKIP_LOAD_SCRIPTS')) {
 			define('NGG_SKIP_LOAD_SCRIPTS', true);
+		}
 	}
 }
-add_action('init', 'remove_nextgen_js');
+add_action('init', 'nggo_remove_nextgen_js');
 
 
 
@@ -17,12 +19,12 @@ add_action('init', 'remove_nextgen_js');
 * remove nextgen gallery styles
 **********************************************************************/
 
-function remove_nextgen_css() {
+function nggo_remove_nextgen_css() {
 	if (!is_admin()) {
 		wp_deregister_style('NextGEN');
 	}
 }
-add_action('wp_print_styles', 'remove_nextgen_css', 100);
+add_action('wp_print_styles', 'nggo_remove_nextgen_css', 100);
 
 
 
