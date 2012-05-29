@@ -5,8 +5,9 @@ Author URI: http://www.markstechnologynews.com
 Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
 Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.1.2
-Tested up to: 3.3.1
-Stable tag: 1.0.6
+Tested up to: 3.3.2
+Stable tag: 1.0.7
+License: GPLv2
 
 Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
 
@@ -16,9 +17,9 @@ Improves your site's page load speed by preventing NextGEN's scripts & css from 
 
 Improves your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode.
 
-It also includes and *automatically*-integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site! *Requires NextGEN Gallery 1.6.2 and up.
+It also includes and *automatically*-integrates the fantastic [Fancybox](http://fancybox.net) lightbox script, so now you can have gorgeous galleries AND a speedy site! *Requires NextGEN Gallery 1.6.2 and up.
 
-Please note: This basic version currently only supports the **[nggallery id=x]** shortcode.
+Please note: The basic version currently only supports the **[nggallery id=x]** shortcode and thus, will not load the extra scripts required for slideshows to function. If you require slideshow support, please consider upgrading to the Premium version for a small donation...
 
 = NextGEN Gallery Optimizer *Premium* =
 
@@ -34,6 +35,15 @@ If you have any questions, suggestions, ideas or feedback, please email me at ma
 1. Improves your WordPress page load speed!
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
+
+
+= NEW in Version 1.0.7: =
+
+1. Improved compatibility with other scripts and plugins. (Basic and Premium)
+2. Minor bug fix in admin message. (Basic and Premium)
+
+This version enhances compatibility with other plugins and includes a few minor improvements.
+
 
 = NEW in Version 1.0.6: =
 
@@ -157,6 +167,14 @@ Any version since 1.6.2
 
 == Changelog ==
 
+= V1.0.7 - 29/05/2012 =
+
+* Converted all jQuery "$" selectors in Fancybox’s invocation code to "jQuery" to prevent conflicts with other plugins and scripts.
+
+* Fixed a minor bug in the "file not writable" admin message whereby the filename was omitted.
+
+
+
 = V1.0.6 - 04/04/2012 =
 
 * Installation of Fancybox is now fully automated and set by default.
@@ -236,6 +254,7 @@ database options.
 
 
 == Upgrade Notice ==
+= Upgrade to V1.0.7 is non-essential. Just a maintenance update. =
 = Upgrade to V1.0.6 is recommended for a number of coding improvements. =
 = Upgrade to V1.0.5 is recommended for more accurate shortcode detection. =
 = Upgrade to V1.0.4 is non-essential. Adds features to assist new users in getting set up. =

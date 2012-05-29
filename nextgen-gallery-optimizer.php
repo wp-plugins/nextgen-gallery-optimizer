@@ -3,7 +3,7 @@
 Plugin Name: NextGEN Gallery Optimizer
 Description: Optimizes your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode. Also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site!
 Author: Mark Jeldi
-Version: 1.0.6
+Version: 1.0.7
 
 Author URI: http://www.markstechnologynews.com
 
@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 $nggo_options = get_option('nextgen_optimizer_settings');
 
-define( 'NGGO_VERSION', '1.0.6' );
+define( 'NGGO_VERSION', '1.0.7' );
 define( 'NGGO_FANCYBOX_VERSION', '1.3.4' );
 define( 'NGGO_JQUERY_VERSION', '1.7.1' );
 
@@ -110,7 +110,7 @@ function nggo_add_default_values() {
 		$nggo_default_values = array(
 				"theme" => "Default Styles",
 				"css" => "",
-				"fancybox" => "",
+				"fancybox" => "1",
 				"do_redirect" => "yes",
 				"show_message" => "yes"
 				);
@@ -193,19 +193,6 @@ function nggo_fancybox_stylesheet_regex() {
 		if (!isset($nggo_options['version']) ||
 		isset($nggo_options['version']) && $nggo_options['version'] != NGGO_VERSION) {
 
-			// admin error message
-			function nggo_file_not_writable_error() {
-				global $nggo_css_filename;
-				global $pagenow;
-			
-    			if ($pagenow == 'plugins.php' ||
-				isset($_GET['page']) && $_GET['page'] == 'nextgen_optimizer_options') {
-					
-					echo '<div class="error"><p>The file ' . $nggo_css_filename . ' is not writable. Please change its permissions to 766.</p></div>';
-			
-				}
-			}
-
 			$nggo_css_filename = WP_PLUGIN_DIR."/nextgen-gallery-optimizer/css/jquery.fancybox-1.3.4.css";
 			$nggo_image_path = plugins_url( 'fancybox/' , __FILE__);
 			$nggo_data = file_get_contents($nggo_css_filename);
@@ -250,6 +237,22 @@ function nggo_fancybox_stylesheet_regex() {
 	}
 }
 add_action('admin_init', 'nggo_fancybox_stylesheet_regex');
+
+
+function nggo_file_not_writable_error() {
+	global $pagenow;
+	
+	// admin error message
+	
+	if ($pagenow == 'plugins.php' ||
+	isset($_GET['page']) && $_GET['page'] == 'nextgen_optimizer_options') {
+
+	$nggo_css_filename = WP_PLUGIN_DIR."/nextgen-gallery-optimizer/css/jquery.fancybox-1.3.4.css"; // global doesn't seem to work here
+
+	echo '<div class="error"><p>The file ' . $nggo_css_filename . ' is not writable. Please change its permissions to 766.</p></div>';
+
+	}
+}
 
 
 

@@ -64,7 +64,8 @@ ob_start();
 		'; ?>
 		</div>
 
-		<small>*$5 donation required.</small>
+		<small>*$5 donation required.<br />
+		PayPal will automatically redirect you to the download page or click "Return to Helpful Media" on the confirmation screen.</small>
 		
 	</div>
 
