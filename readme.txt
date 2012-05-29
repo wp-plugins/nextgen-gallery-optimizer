@@ -260,3 +260,4 @@ database options.
 = Upgrade to V1.0.4 is non-essential. Adds features to assist new users in getting set up. =
 = Upgrade to V1.0.3 recommended for improved compatibility with other plugins. =
 = Upgrade to V1.0.2 recommended for cross-browser support. =
+ 
