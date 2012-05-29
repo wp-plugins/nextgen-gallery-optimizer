@@ -169,7 +169,7 @@ Any version since 1.6.2
 
 = V1.0.7 - 29/05/2012 =
 
-* Converted all jQuery "$" selectors in Fancybox’s invocation code to "jQuery" to prevent conflicts with other plugins and scripts.
+* Converted all jQuery "$" selectors in Fancybox's invocation code to "jQuery" to prevent conflicts with other plugins and scripts.
 
 * Fixed a minor bug in the "file not writable" admin message whereby the filename was omitted.
 
