@@ -17,7 +17,7 @@ function nggo_fancybox_style() {
 
 function nggo_fancybox_inline_js() { ?>
 <!-- [nextgen gallery optimizer] This page must contain a nextgen shortcode...else we wouldn't be serving its scripts and styles -->
-<script type='text/javascript'>jQuery(document).ready(function() { jQuery('a.myfancybox').fancybox({ 'zoomSpeedIn': 500, 'zoomSpeedOut': 500, 'overlayShow':true,'overlayOpacity':0.3 }); });</script>
+<script type='text/javascript'>jQuery.noConflict(); jQuery(document).ready(function() { jQuery('a.myfancybox').fancybox({ 'zoomSpeedIn':500, 'zoomSpeedOut':500, 'overlayShow':true, 'overlayOpacity':0.3 }); });</script>
 <?php
 }
 

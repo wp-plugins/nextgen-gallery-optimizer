@@ -5,8 +5,8 @@ Author URI: http://www.markstechnologynews.com
 Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
 Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.1.2
-Tested up to: 3.3.2
-Stable tag: 1.0.7
+Tested up to: 3.4
+Stable tag: 1.0.8
 License: GPLv2
 
 Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
@@ -35,6 +35,15 @@ If you have any questions, suggestions, ideas or feedback, please email me at ma
 1. Improves your WordPress page load speed!
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
+
+= NEW in Version 1.0.8: =
+
+1. Tested fully-compatible with WordPress 3.4 (Basic and Premium)
+2. Improved compatibility with other plugins and themes (Basic and Premium)
+3. Display fix for Fancybox when no title is available (Basic and Premium)
+4. Latest jQuery 1.7.2 (Basic and Premium)
+
+This version adds the jQuery.noConflict(); method for improved compatibility with plugins and themes using other javascript libraries/frameworks including script.aculo.us, Prototype and MooTools. It also includes a fix for Fancybox/NextGEN Gallery integration where a small white line would appear underneath the lightbox when no title was set.
 
 
 = NEW in Version 1.0.7: =
@@ -167,6 +176,20 @@ Any version since 1.6.2
 
 == Changelog ==
 
+= V1.0.8 - 18/06/2012 =
+
+* Changed "compatible up to" version number after thorough testing on WordPress 3.4.
+
+* Added the jQuery.noConflict(); method to improve compatibility with plugins and themes using other javascript libraries/frameworks including script.aculo.us, Prototype and MooTools.
+
+* Fixed a Fancybox/NextGEN Gallery integration issue where a small white line would appear underneath the lightbox when no title was set.
+
+* Recompiled jquery.fancybox-1.3.4.pack.js with Google Closure Compiler after above fix.
+
+* Switched Google-hosted jQuery to the latest version (1.7.2).
+
+
+
 = V1.0.7 - 29/05/2012 =
 
 * Converted all jQuery "$" selectors in Fancybox's invocation code to "jQuery" to prevent conflicts with other plugins and scripts.
@@ -254,6 +277,7 @@ database options.
 
 
 == Upgrade Notice ==
+= Upgrade to V1.0.8 is recommended for improved compatibility with other plugins and themes. =
 = Upgrade to V1.0.7 is non-essential. Just a maintenance update. =
 = Upgrade to V1.0.6 is recommended for a number of coding improvements. =
 = Upgrade to V1.0.5 is recommended for more accurate shortcode detection. =
