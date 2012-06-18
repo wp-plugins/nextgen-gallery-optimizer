@@ -481,8 +481,10 @@
 				.empty()
 				.removeAttr('style')
 				.removeClass();
+            
+            // Optimizer...fix for integration with NextGEN Gallery.
 
-			if (currentOpts.titleShow === false) {
+			if (currentOpts.titleShow === false || currentOpts.title === ' ') {
 				title.hide();
 				return;
 			}
