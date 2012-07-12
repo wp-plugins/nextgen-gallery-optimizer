@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: NextGEN Gallery Optimizer
-Description: Optimizes your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode. Also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site!
+Description: <strong><a href="http://www.markstechnologynews.com/nextgen-gallery-optimizer-premium/?ref=plugins">*** UPGRADE TO NEXTGEN GALLERY OPTIMIZER PREMIUM ***</a> to add support for ALL TEN NextGEN shortcodes and more!</strong>   NextGEN Gallery Optimizer improves your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode. Also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site!
 Author: Mark Jeldi
-Version: 1.0.8
+Version: 1.1
 
 Author URI: http://www.markstechnologynews.com
 
@@ -30,8 +30,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 **************************************************/
 
 $nggo_options = get_option('nextgen_optimizer_settings');
+$nggo_nextgen_options = get_option('ngg_options');
 
-define( 'NGGO_VERSION', '1.0.8' );
+define( 'NGGO_VERSION', '1.1' );
 define( 'NGGO_FANCYBOX_VERSION', '1.3.4' );
 define( 'NGGO_JQUERY_VERSION', '1.7.2' );
 
@@ -120,6 +121,24 @@ function nggo_add_default_values() {
 	}
 }
 register_activation_hook(__FILE__, 'nggo_add_default_values');
+
+
+
+/********************************************************************************
+* define extra default options after update from earlier versions
+********************************************************************************/
+
+function nggo_add_extra_default_options() {
+	
+	global $nggo_options;
+	
+	if (!isset($nggo_options['jquery'])) {
+	
+		$nggo_options['jquery'] = 'wordpress'; // add value to array
+		update_option('nextgen_optimizer_settings', $nggo_options); // update option array
+	}
+}
+add_action('admin_init', 'nggo_add_extra_default_options');
 
 
 

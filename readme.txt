@@ -5,8 +5,8 @@ Author URI: http://www.markstechnologynews.com
 Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
 Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.1.2
-Tested up to: 3.4
-Stable tag: 1.0.8
+Tested up to: 3.4.1
+Stable tag: 1.1
 License: GPLv2
 
 Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
@@ -17,17 +17,17 @@ Improves your site's page load speed by preventing NextGEN's scripts & css from 
 
 Improves your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode.
 
-It also includes and *automatically*-integrates the fantastic [Fancybox](http://fancybox.net) lightbox script, so now you can have gorgeous galleries AND a speedy site! *Requires NextGEN Gallery 1.6.2 and up.
+It also includes and *automatically*-integrates the fantastic [Fancybox](http://fancybox.net) lightbox script, so now you can have gorgeous galleries AND a speedy site! *Requires [NextGEN Gallery](http://wordpress.org/extend/plugins/nextgen-gallery) 1.6.2 and up.
 
-Please note: The basic version currently only supports the **[nggallery id=x]** shortcode and thus, will not load the extra scripts required for slideshows to function. If you require slideshow support, please consider upgrading to the Premium version for a small donation...
+Please note: The basic version currently only supports the popular **[nggallery id=x]** shortcode and thus, will not load the extra scripts required for slideshows to function. If you require slideshow support, please consider downloading the [Premium version](http://www.markstechnologynews.com/nextgen-gallery-optimizer-premium)...
 
 = NextGEN Gallery Optimizer *Premium* =
 
 Builds on the basic version and adds support for ALL TEN of NextGen's shortcodes including **[nggallery id=x]**, **[slideshow id=x]**, **[album id=x]**, **[thumb id=x]**, **[singlepic id=x]**, **[imagebrowser id=x]**, **[nggtags gallery|album=mytag]**, **[random max=x]**, **[recent max=x]** and **[tagcloud]**.
 
-It also adds support for the **[Show as slideshow]** link (loading slideshow scripts only after a user clicks-through), precision targeting for **shortcode SUB-pages** (ensuring we only load the scripts we need on each view) and also **removes NextGEN's version number comment** (for less clutter behind every page).
+It also adds support for the **[Show as slideshow]** link (loading slideshow scripts only after a user clicks-through), precision targeting for **shortcode SUB-pages** (ensuring we only load the scripts we need on each view), support for **JW Image Rotator** for stylish slideshows, support for **AJAX pagination on [imagebrowser id=x]** and now, features an attractive effect that **resizes Fancybox when the browser window is resized**.
 
-This donation-based version is available from the plugin settings page, [or can be downloaded here](http://www.markstechnologynews.com/nextgen-gallery-optimizer-premium).
+This Premium version is available from the plugin settings page, [or can be downloaded here](http://www.markstechnologynews.com/nextgen-gallery-optimizer-premium).
 
 If you have any questions, suggestions, ideas or feedback, please email me at mark@markstechnologynews.com
 
@@ -35,6 +35,23 @@ If you have any questions, suggestions, ideas or feedback, please email me at ma
 1. Improves your WordPress page load speed!
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
+
+
+= NEW in Version 1.1 (first major release): =
+
+1. Fancybox title now included in image height calculations (Basic and Premium)
+2. New options: WordPress's included jQuery **or** go Google-hosted (Basic and Premium)
+3. Support for the Thickbox effect (Basic and Premium)
+4. Support for the Shutter effect (Basic and Premium)
+5. Support for JW Image Rotator slideshow integration (Premium)
+6. Support for AJAX pagination on [imagebrowser id=x] (reqs. Shutter) (Premium)
+7. Fancybox gets extra fancy...auto-resizes when the browser is resized (Premium)
+
+This first major release for Optimizer sees a number of new additions and features...
+Fancybox now includes space for a single-line title in its image height calculations, vastly improving vertical alignment of the lightbox. Also, Optimizer now lets you choose between using WordPress's included jQuery (for greater compatibility), or the Google-hosted version (for faster page loads). Support for the Thickbox and Shutter effects has also been added thanks to user requests. 
+
+On top of this, the Premium version now includes AJAX pagination when using Shutter on the [imagebrowser id=x] shortcode, supports the JW Image Rotator for slideshows and features a super-fancy, auto-resize function that *resizes Fancybox when the browser window is resized!*
+
 
 = NEW in Version 1.0.8: =
 
@@ -103,29 +120,61 @@ It fixes the "Fancybox not working in IE6 & IE8" issue by automatically updating
 
 == Installation ==
 
+To install NextGEN Gallery Optimizer:
+
 1. Upload `nextgen-gallery-optimizer` to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Proceed to the plugin settings page to complete installation.
 
 
+= How do I set up a gallery? =
+
+Firstly, you'll need a copy of NextGEN Gallery...
+http://wordpress.org/extend/plugins/nextgen-gallery/
+
+Once you've activated NextGEN Gallery on your plugins page, look for a "Gallery" tab at the bottom of your left sidebar in your WordPress admin.
+
+1. Go to Gallery --> Add Gallery/Images
+Click the "Add New Gallery" tab, enter a name for your gallery and click the "Add gallery" button.
+
+2. Click the "Upload Images" tab, click the "Select Files" button and choose which images you want to upload from your computer, select the gallery you just created from the "in to" dropdown menu, and click the "Upload images" button to begin the transfer.
+
+3. Finally, to insert your gallery, just create a new post or page (Posts --> Add New or Pages --> Add New), type the shortcode [nggallery id=1] into the editor, and click the "Publish" button on the right to save your changes. Note: The "1" in the shortcode should be the id number of the gallery you wish to display.
+
+4. That's it! Navigate to the page you just created and your gallery should be live!
+
+If you'd like to optimize this for speed, and add the Fancybox lightbox effect when you click on your gallery thumbnails, simply activate NextGEN Gallery Optimizer from your plugins page. With Optimizer enabled, your site will feel lighter and faster as it ensures the required scripts and styles only load on pages with galleries.
+
+
 == Frequently Asked Questions ==
 
-= Basic Version =
+= General =
  
 = Wait...my galleries are displaying in a vertical line! =
 
 Please make sure you've selected a stylesheet on the (NextGEN Optimizer) settings page, and that you're using the [nggallery id=x] shortcode in your posts. This is the only supported shortcode in the basic version presently.
 
+= Wait...my galleries are displaying properly, but my images load in a new window! =
 
-= My image thumbnails are clicking-through to an image URL! Where did the lightbox go? =
+If you're sure Fancybox is activated on Optimizer's settings page, and the lightbox still won't display using the "Use WordPress jQuery [greater compatibility]" setting, it is highly likely you have a conflict caused by two or more instances of jQuery loading on the same page. This is typically due to jQuery calls having been hard-coded into your theme.
 
-By design, the plugin strips NextGEN's sitewide scripts and styles (including those for lightboxes) and lets you insert your own...only where they're needed. 
+Please inspect your theme files (the header.php and footer.php in particular) for lines including jquery.js or jquery.min.js and either comment them out, or remove them altogether.
 
-Currently, NextGEN Optimizer lets you add the free and fabulous Fancybox lightbox to your gallery thumbs. Other effects are on the way...
+= How do I set the Shutter or Thickbox effect? =
 
-To set up Fancybox, please check it's checkbox on the (NextGEN Optimizer) settings page. After you save, just go to Gallery --> Options --> Effects, select Custom and enter: **class="myfancybox" rel="%GALLERY_NAME%"** to complete the installation.
+Firstly, you'll need to deactivate Fancybox on the Optimizer settings page and click "Save Options". After that, simply navigate to Gallery --> Options --> Effects, select your effect and click "Save Changes".
 
-This will integrate the Fancybox lightbox with NextGEN Gallery on your [nggallery id=x] shortcodes instead of directing you to the image URL.
+= Is this plugin compatible with minification/caching tools? =
+
+Yes. However the small, already minified Fancybox script must be excluded from combining/minification or it won't function. This is true of any lightbox script.
+
+For WP Minify, simply add /wp-content/plugins/nextgen-gallery-optimizer/fancybox/jquery.fancybox-1.3.4.pack.js in its js file exclusion options and clear the cache.
+
+For W3 Total Cache, do nothing. It doesn't auto-discover, so as long as you don't manually add the script, it won't be included.
+
+= What version of NextGEN Gallery is this plugin compatible with? =
+
+Any version since 1.6.2
 
 
 = Premium Version =
@@ -142,6 +191,12 @@ The drag-and-drop "Manage Albums" page in NextGEN does not auto-save like the Wo
 
 Please go to GALLERY -> MANAGE GALLERY and select the gallery that's causing you trouble. Inside this gallery, ensure ALL image thumbnails are displaying and re-upload them if necessary. If they're missing, the "Path" field may have been changed, which will cause the slideshow to break.
 
+Also, slideshows require two or more images in your galleries to function, else they'll break as above.
+
+= How do I get regular pagination on NextGEN Album pages? =
+
+By default, Album pages don't include pagination...but you can activate this feature by adding a custom field called "ngg_paged_Galleries" on the edit screen for your album page in the WordPress admin. The value of the custom field should be the number of albums you wish to display per page.
+
 = Why doesn't Optimizer support NextGEN widgets? =
 
 After spending weeks working on integrating this, I've discovered it's not presently possible in WordPress to:
@@ -152,21 +207,24 @@ After spending weeks working on integrating this, I've discovered it's not prese
 
 Since both the Fancybox and the NextGEN slideshow scripts must be loaded in the head section of the page so they don't break, and since the whole point of this plugin is to NOT load scripts on every page, I've had to abandon this idea for the time being. If you know of a solution, do let me know and I'll add it in the next version!
 
+= Why doesn't Premium support AJAX pagination on gallery pages? =
 
-= General =
- 
-= Is this plugin compatible with minification/caching tools? =
+Apart from the [imagebrowser id=x] shortcode, I had hoped to add support for this on regular galleries and album galleries too, but unfortunately NextGEN's implementation to date is just too buggy, inconsistent and restrictive. For example...
 
-Yes. However the small, already minified Fancybox script must be excluded from combining/minification or it won't function. This is true of any lightbox script.
+1. You have to use the Shutter effect across your whole site.
+2. It breaks the [Show as slideshow] links when activated.
+3. It causes several error notices per page (visible in debug mode) read: massive error log.
+4. It isn't coded to work at all on album main pages or on most shortcodes (UI inconsistency).
 
-For WP Minify, simply add /wp-content/plugins/nextgen-gallery-optimizer/fancybox/jquery.fancybox-1.3.4.pack.js in its js file exclusion options and clear the cache.
+I've tried to iron out some of these issues myself, but to no avail. Hopefully the team at Photocrati will look into this for a future release.
 
-For W3 Total Cache, do nothing. It doesn't auto-discover, so as long as you don't manually add the script, it won't be included.
+= When I activate the JW Image Rotator in NextGEN Gallery, my slideshows only display a big black box! =
 
+Before you can use JW Image Rotator, you'll need to [download it here](http://www.longtailvideo.com/players/jw-image-rotator), upload it to your wp-content/uploads folder and enter the FULL filepath to its imagerotator.swf file at Gallery --> Options --> Slideshow --> "Path to the Imagerotator (URL)".
 
-= What version of NextGEN Gallery is this plugin compatible with? =
+Eg. http://sitename.com/wp-content/uploads/imagerotator/imagerotator.swf
 
-Any version since 1.6.2
+Click "Save Changes" when you're done and you'll be all up and running.
 
 
 == Screenshots ==
@@ -175,6 +233,36 @@ Any version since 1.6.2
 
 
 == Changelog ==
+
+
+
+= V1.1 - 12/07/2012 =
+
+* Added a conditional bottom margin in Fancybox's image height calculations to make room for single-line titles. By default, especially with large images, the titles would be squished against the bottom of the viewport.
+
+* Added new options that allow users to choose between WordPress's included jQuery or Google-hosted jQuery. We used to just run the Google-hosted script, but as users have reported compatibility issues (even with the jQuery.noConflict(); method added in the last update) -- and that those issues have been resolved simply by using the built-in version instead -- I thought it would be best to make WordPress's jQuery the default and provide Google-hosted as an option.
+
+* Added support for WordPress's native Thickbox lightbox integrated with NextGEN Gallery.
+
+* Added support for NextGEN's built-in Shutter effect.
+
+* Added support for NextGEN's JW Image Rotator assistant (Premium) after permission granted from the authors. Turns out we only needed to include WordPress's native swfobject.js on the slideshow shortcode (if activated at Gallery --> Options --> Slideshow --> "Enable flash slideshow"), and grab the file path to the user's downloaded imagerotator.swf file entered below that.
+
+* Added support for NextGEN's AJAX pagination on the [imagebrowser id=x] shortcode (Premium). NextGEN also applies this to Gallery pages and Album gallery pages, but as I've outlined in the FAQ, the implementation is far too buggy, inconsistent and restrictive to add here. From a user interface perspective, it works rather well with imagebrowser (albeit, issuing notices), so I have added it in...but for the galleries, it's really not necessary. I'd say it's better to be without, than have it break the [Show as slideshow] links on the gallery pages.
+
+* Added a function to Fancybox's scripts (Premium) to trigger an auto-resize when a user resizes their browser window. I've also added a slight delay for smooth animation and it looks great! Previously, the lightbox did center itself on window resize, but the image wouldn't rescale without first exiting and re-entering the lightbox.
+
+* Changed three function names after adding support for Shutter and Thickbox (to be more descriptive and consistent).
+1. nggo_load_fancybox is now nggo_load_fancybox_scripts
+2. nggo_fancybox_style is now nggo_load_fancybox_styles
+3. nggo_nextgen_style is now nggo_load_nextgen_styles
+
+* Removed nggo_custom_style. Its functionality has been merged into nggo_load_nextgen_styles.
+
+* Added version number to Optimizer's HTML comment to assist with support.
+
+* Added a link to Premium in the plugin description.
+
 
 = V1.0.8 - 18/06/2012 =
 
@@ -277,6 +365,7 @@ database options.
 
 
 == Upgrade Notice ==
+= Upgrade to V1.1 is recommended for several new features and improvements. =
 = Upgrade to V1.0.8 is recommended for improved compatibility with other plugins and themes. =
 = Upgrade to V1.0.7 is non-essential. Just a maintenance update. =
 = Upgrade to V1.0.6 is recommended for a number of coding improvements. =

@@ -22,6 +22,8 @@ add_action('init', 'nggo_remove_nextgen_js');
 function nggo_remove_nextgen_css() {
 	if (!is_admin()) {
 		wp_deregister_style('NextGEN');
+		wp_deregister_style('shutter');
+		wp_deregister_style('thickbox');
 	}
 }
 add_action('wp_print_styles', 'nggo_remove_nextgen_css', 100);
@@ -36,7 +38,8 @@ function nggo_check_nggallery_shortcode() {
 
     global $post;
     global $nggo_options;
- 	
+	global $nggo_nextgen_options;
+
  	if (!is_admin()) {
 		
 		if (have_posts()) {
@@ -49,27 +52,41 @@ function nggo_check_nggallery_shortcode() {
     			&& array_key_exists( 2, $matches )
     			&& in_array( 'nggallery', $matches[2] ) ) {
     
-					if(isset($nggo_options['fancybox'])) {
-						if($nggo_options['fancybox'] == true) {
-					
-							// see scripts-and-styles.php for functions
-							add_action('wp_enqueue_scripts', 'nggo_load_jquery', 1000);
-							add_action('wp_enqueue_scripts', 'nggo_load_fancybox', 1000);
-							add_action('wp_print_styles', 'nggo_fancybox_style', 1000);
-							add_action('wp_head','nggo_fancybox_inline_js', 1000);
-						}
-					}
 
-					if($nggo_options['css'] != "") {
-						add_action('wp_print_styles', 'nggo_custom_style', 1000); // see scripts-and-styles.php for function 
+					if (isset($nggo_options['fancybox']) && ($nggo_options['fancybox'] == true)) {
+		
+						// see scripts-and-styles.php for functions
+						add_action('wp_enqueue_scripts', 'nggo_load_jquery', 1000);
+						add_action('wp_enqueue_scripts', 'nggo_load_fancybox_scripts', 1000);
+						add_action('wp_print_styles', 'nggo_load_fancybox_styles', 1000);
+						add_action('wp_head','nggo_fancybox_inline_js', 1000);
 	
-					} else {
-
-						if ($nggo_options['theme'] != "") {
-							add_action('wp_print_styles', 'nggo_nextgen_style', 1000); // see scripts-and-styles.php for function
-						}
-				
 					}
+					
+					if (isset($nggo_nextgen_options['thumbEffect']) && ($nggo_nextgen_options['thumbEffect'] == 'shutter')) {
+					
+						// see scripts-and-styles.php for functions
+						add_action('wp_enqueue_scripts', 'nggo_load_shutter_scripts', 1000);
+						add_action('wp_print_styles', 'nggo_load_shutter_styles', 1000);
+						add_action('wp_head','nggo_shutter_inline_js', 1000);
+						
+					}
+
+					if (isset($nggo_nextgen_options['thumbEffect']) && ($nggo_nextgen_options['thumbEffect'] == 'thickbox')) {
+					
+						if (isset($nggo_options['jquery']) && ($nggo_options['jquery'] == 'google')) {
+							add_action('wp_head','nggo_jquery_no_conflict_inline_js', 1000);
+						}
+						
+						// see scripts-and-styles.php for functions
+						add_action('wp_enqueue_scripts', 'nggo_load_jquery', 1000);
+						add_action('wp_enqueue_scripts', 'nggo_load_thickbox_scripts', 1000);
+						add_action('wp_print_styles', 'nggo_load_thickbox_styles', 1000);
+						
+					}
+	
+					add_action('wp_print_styles', 'nggo_load_nextgen_styles', 1000); // see scripts-and-styles.php for function
+
 				}
 			}
 		}

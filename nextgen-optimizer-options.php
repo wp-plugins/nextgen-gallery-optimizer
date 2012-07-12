@@ -15,64 +15,86 @@ ob_start();
 	<div class="nggo_premium_box">
 		<h2>New!...NextGEN Gallery Optimizer <i>Premium!</i></h2>
 
-		<h3 class="nggo_h3">Support for ALL TEN NextGEN shortcodes</h3>
+		<h3 class="nggo_h3">Support for ALL TEN NextGEN shortcodes...</h3>
 		
-		<div style="float:left; width:300px;">
-		<p>
-		<b>
-		1. [nggallery id=x]<br />
-		2. [slideshow id=x]<br />
-		3. [album id=x]<br />
-		4. [thumb id=x]<br />
-		5. [singlepic id=x]<br />
-		6. [imagebrowser id=x]<br />
-		7. [nggtags gallery|album=mytag]<br />
-		8. [random max=x]<br />
-		9. [recent max=x]<br />
-		10. [tagcloud]
-		</b>
-		</p>
-		</div>
+		<div>			
+			<div style="float:left; margin: 10px 20px 5px 0; font-weight:bold;">		
+				1. [nggallery id=x]<br />
+				2. [slideshow id=x]<br />
+				3. [album id=x]<br />
+				4. [thumb id=x]<br />
+				5. [singlepic id=x]<br />	
+			</div>		
 
-		<div style="float:left;">
-		<p>
-		<b>+ Support for the [Show as slideshow] link</b><br />
-		Load slideshow scripts...and ONLY after click-through.
-		</p>
-
-		<p>
-		<b>+ Precision targeting for shortcode SUB-pages</b><br />
-		Only load the scripts required on each and every view.
-		</p>
-
-		<p>
-		<b>+ Removes NextGEN Gallery's version number</b><br />
-		Less source code comment clutter behind every page.
-		</p>
+			<div style="float:left; margin: 10px 0 5px 0; font-weight:bold;">			
+				6. [imagebrowser id=x]<br />
+				7. [nggtags gallery|album=mytag]<br />	
+				8. [random max=x]<br />
+				9. [recent max=x]<br />
+				10. [tagcloud]
+			</div>		
 		</div>
 		
 		<div class="clear"></div>
 
-		<div class="nggo_premium_download">
-		<?php echo '
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-		<input id="nggo_premium_input" type="hidden" name="cmd" value="_s-xclick">
-		<input id="nggo_premium_input" type="hidden" name="hosted_button_id" value="GDFJ6B9CKNPHN">
-		<input id="nggo_premium_input" type="image" src="' . plugins_url( 'images/download-button.gif' , __FILE__) . '" width="150" height="26" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
-		<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-		</form>
-		'; ?>
+		<div style="float:left; margin-right:20px;">		
+			<p>
+				<b>+ Support for the [Show as slideshow] link</b><br />
+				Load slideshow scripts...and ONLY after click-through.
+			</p>
+
+			<p>
+				<b>+ Precision targeting for shortcode SUB-pages</b><br />
+				Only load the scripts required on each and every view.
+			</p>
+
+			<p>
+				<b>+ Removes NextGEN Gallery's version number</b><br />
+				Less source code comment clutter behind every page.
+			</p>
+		</div>
+		
+		<div style="float:left;">
+			<p>
+				<b>+ Support for JW Image Rotator slideshows</b><br />
+				Flash-based transitions display your image portfolio in style.
+			</p>
+		
+			<p>
+				<b>+ Support for AJAX pagination on [imagebrowser id=x]</b><br />
+		 		Browse full-size images without page refreshes (requires Shutter).
+			</p>
+		
+			<p>
+				<b>+ Attractive browser resize effect for Fancybox.</b><br />
+				Resizes Fancybox when the browser window is resized.
+			</p>
 		</div>
 
-		<small>*$5 donation required.<br />
-		PayPal will automatically redirect you to the download page or click "Return to Helpful Media" on the confirmation screen.</small>
+		<div class="clear"></div>
+
+		<div class="nggo_premium_download">
+			<?php echo '
+			<form id="nggo_premium_download_form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input id="nggo_premium_input" type="hidden" name="cmd" value="_s-xclick">
+			<input id="nggo_premium_input" type="hidden" name="hosted_button_id" value="4TRAS5FT9T234">
+			<input id="nggo_premium_input" type="image" src="' . plugins_url( 'images/download-button.gif' , __FILE__) . '" width="150" height="26" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			'; ?>		
+		</div>
 		
-	</div>
+		<div class="nggo_small">
+			*$15 donation required.<br />
+			PayPal will automatically redirect you to the download page or click "Return to Helpful Media" on the confirmation screen.
+		</div>
+
+	</div> <!-- close nggo_premium_box -->
 
 
 
 	<div class="nggo_box">	
-		<form method="post" action="options.php">
+		<form id="nggo_submit_options" method="post" action="options.php">
 		<?php settings_fields('nextgen_optimizer_settings_group'); ?>
 			
 		<div class="nggo_inner">
@@ -105,9 +127,20 @@ ob_start();
 			<input id="nextgen_optimizer_settings[fancybox]" name="nextgen_optimizer_settings[fancybox]" type="checkbox" value="1" <?php checked(1, $nggo_options['fancybox']); ?> />
 			&nbsp;&nbsp;<b>Use <a href="http://fancybox.net" target="_blank">Fancybox</a> lightbox effect?</b>
 		</div>
-				
 
-		<h2><?php _e('Step 3:', 'nextgen_optimizer_domain'); ?></h2>
+		<div class="nggo_inner">
+			<h2><?php _e('Step 3:', 'nggop_domain'); ?></h2>
+			<label>
+				<input id="nextgen_optimizer_settings[jquery]" name="nextgen_optimizer_settings[jquery]" type="radio" value="wordpress" <?php checked(wordpress, $nggo_options['jquery']); ?> />
+				&nbsp;&nbsp;<b>Use WordPress jQuery [greater compatibility]</b>&nbsp;&nbsp;&nbsp;&nbsp;
+			</label>
+			<label>
+				<input id="nextgen_optimizer_settings[jquery]" name="nextgen_optimizer_settings[jquery]" type="radio" value="google" <?php checked(google, $nggo_options['jquery']); ?> />
+				&nbsp;&nbsp;<b>Use Google-hosted jQuery [faster page loads]</b>
+			</label>
+		</div>
+
+		<h2><?php _e('Step 4:', 'nextgen_optimizer_domain'); ?></h2>
 		<input type="submit" class="button-primary" value="<?php _e('Save Options', 'nextgen_optimizer_domain'); ?>" />&nbsp;&nbsp;<b>Save your changes and enjoy!</b>&nbsp;
 		Your gallery scripts and styles will now only load on posts with the [nggallery id=x] shortcode.
 
@@ -158,7 +191,7 @@ ob_start();
 	<div class="nggo_box">
 		<h2>Support:</h2>
 		Any questions or suggestions?<br />
-		Please <a href='mailto:mark@markstechnologynews.com'>send me an email</a>, or leave a message at the <a href="http://wordpress.org/tags/nextgen-gallery-optimizer?forum_id=10">Support Forum</a>.
+		Please <a href='mailto:mark@markstechnologynews.com'>send me an email</a>, or leave a message at the <a href="http://wordpress.org/support/plugin/nextgen-gallery-optimizer">Support Forum</a>.
 	</div>
 		
 </div><!-- end wrap -->
