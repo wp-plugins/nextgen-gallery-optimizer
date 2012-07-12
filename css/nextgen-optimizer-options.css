@@ -24,11 +24,19 @@
 }
 
 #nggo_premium_input {
-margin:0; padding:0
+    margin:0;
+    padding:0
 }
 
 .nggo_premium_download {
-padding: 5px 0 8px 0
+    padding: 4px 0 10px 0;
+    margin:0;
+}
+
+#nggo_premium_download_form {
+    padding:0;
+    margin:0;
+    border: none;
 }
 
 .nggo_premium_box {
@@ -36,6 +44,19 @@ padding: 5px 0 8px 0
     background-color:#FFFBCC;
     padding:0px 15px 15px 15px;
     margin:0 0 15px 0
+}
+
+#nggo_submit_options {
+    padding:0;
+    margin:0;
+}
+
+.nggo_small {
+    font-weight:normal;
+    font-size:10px;
+    line-height:1.4em;
+    padding:0;
+    margin:0;
 }
 
 .nggo_h3 {
