@@ -481,8 +481,12 @@
 				.empty()
 				.removeAttr('style')
 				.removeClass();
+ 
             
-            // Optimizer...fix for integration with NextGEN Gallery.
+/**********************************************************************
+* NextGEN Gallery Optimizer
+* Fix for integration with NextGEN Gallery.
+**********************************************************************/
 
 			if (currentOpts.titleShow === false || currentOpts.title === ' ') {
 				title.hide();
@@ -673,12 +677,41 @@
 		},
 
 		_get_viewport = function() {
-			return [
-				$(window).width() - (currentOpts.margin * 2),
-				$(window).height() - (currentOpts.margin * 2),
-				$(document).scrollLeft() + currentOpts.margin,
-				$(document).scrollTop() + currentOpts.margin
-			];
+
+
+/**********************************************************************
+* NextGEN Gallery Optimizer
+* Add room for title in image height calculations
+**********************************************************************/
+
+            if (currentOpts.titleShow === false ||
+                currentOpts.title === ' ' ||
+                currentOpts.titlePosition === 'over') {
+                var addTitleHeight = 0;
+            }
+            
+            if (currentOpts.titlePosition === 'outside' && currentOpts.title !== ' ') {
+                var addTitleHeight = 15;
+            }
+                
+            if (currentOpts.titlePosition === 'inside' && currentOpts.title !== ' ') {
+                var addTitleHeight = 28;
+            }
+            
+            if (currentOpts.titlePosition === 'float' && currentOpts.title !== ' ') {
+                var addTitleHeight = 28;
+            }
+            
+            if (currentOpts.type == 'iframe') {
+                var addTitleHeight = 0;
+            }        
+        
+            return [
+                $(window).width() - (currentOpts.margin * 2),
+                $(window).height() - (currentOpts.margin * 2 + addTitleHeight),
+                $(document).scrollLeft() + currentOpts.margin,
+                $(document).scrollTop() + currentOpts.margin
+            ];
 		},
 
 		_get_zoom_to = function () {
@@ -1150,6 +1183,7 @@
 		onClosed : function(){},
 		onError : function(){}
 	};
+
 
 	$(document).ready(function() {
 		$.fancybox.init();
