@@ -5,8 +5,8 @@ Author URI: http://www.markstechnologynews.com
 Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
 Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.1.2
-Tested up to: 3.4.1
-Stable tag: 1.1
+Tested up to: 3.4.2
+Stable tag: 1.1.1
 License: GPLv2
 
 Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
@@ -35,6 +35,14 @@ If you have any questions, suggestions, ideas or feedback, please email me at ma
 1. Improves your WordPress page load speed!
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
+
+
+= NEW in Version 1.1.1: =
+1. Dynamic messaging for admins on unsupported shortcodes (Basic)
+2. Checks to ensure jQuery isn't being deregistered (Basic and Premium)
+3. Includes blank index.php files for enhanced security (Basic and Premium)
+
+This release aims to improve communication between Optimizer and end-users, including dynamic messaging for admins on unsupported shortcodes, and a clever regex that detects and alerts you if your theme (or child-theme) is deregistering jQuery...which causes Fancybox to break. Additionally, security is enhanced with the addition of blank index.php files in each folder, preventing bots from scanning your server's directory tree.
 
 
 = NEW in Version 1.1 (first major release): =
@@ -160,6 +168,14 @@ If you're sure Fancybox is activated on Optimizer's settings page, and the light
 
 Please inspect your theme files (the header.php and footer.php in particular) for lines including jquery.js or jquery.min.js and either comment them out, or remove them altogether.
 
+Additionally, make sure you have wp_head(); in your theme's header.php file. It will usually be right before the closing </ head > tag, and is an essential hook for plugins such as Optimizer to be able to load the necessary scripts and styles.
+
+= Help!...I can't see the NextGEN "Gallery" tab!!! =
+
+1. Please make sure the "NextGEN Gallery" plugin is both installed and activated on your plugins page in the admin (it's a separate plugin available [here](http://wordpress.org/extend/plugins/nextgen-gallery/)). Once activated, the "Gallery" options tab should appear near the bottom of your left sidebar in the admin.
+
+2. If you can't find the tab for your plugins page either, it's likely you're logged in as a user without administrative privileges. You can verify this by visiting http://www.yoursite.com/wp-admin/plugins.php.
+
 = How do I set the Shutter or Thickbox effect? =
 
 Firstly, you'll need to deactivate Fancybox on the Optimizer settings page and click "Save Options". After that, simply navigate to Gallery --> Options --> Effects, select your effect and click "Save Changes".
@@ -170,7 +186,7 @@ Yes. However the small, already minified Fancybox script must be excluded from c
 
 For WP Minify, simply add /wp-content/plugins/nextgen-gallery-optimizer/fancybox/jquery.fancybox-1.3.4.pack.js in its js file exclusion options and clear the cache.
 
-For W3 Total Cache, do nothing. It doesn't auto-discover, so as long as you don't manually add the script, it won't be included.
+For W3 Total Cache, you'll need to select the "manual" minify option at Performance --> General Settings. After that, jump to Performance --> Minify where you can hand-pick the scripts and styles you want minified/combined (excluding Fancybox).
 
 = What version of NextGEN Gallery is this plugin compatible with? =
 
@@ -226,6 +242,15 @@ Eg. http://sitename.com/wp-content/uploads/imagerotator/imagerotator.swf
 
 Click "Save Changes" when you're done and you'll be all up and running.
 
+= Why isn't Optimizer Premium detecting my Album gallery pages or the [Show as slideshow] links? =
+
+This issue is likely caused by the "Activate permalinks" option at Gallery --> Options --> General Options, which changes NextGEN's URL structure for things such as the "Show as slideshow" and "Show picture list" links, as well as navigation through your Album pages. 
+
+Optimizer Premium looks for NextGEN's default URL structure, which appends query string parameters to much of the navigation. With "Activate permalinks" switched on, these parameters are no longer present, which results in the plugin not recognizing where to add the necessary scripts for either Fancybox or slideshow functionality.
+
+I'm currently working on a way to target these permalink URLs for a future version of the plugin, but for now, correcting the issue is as simple as navigating to Gallery --> Options --> General Options, switching off the "Activate permalinks" setting and clicking "Save Changes".
+
+
 
 == Screenshots ==
 
@@ -234,6 +259,13 @@ Click "Save Changes" when you're done and you'll be all up and running.
 
 == Changelog ==
 
+= V1.1.1 - 08/11/2012 =
+
+* Added a dynamic administrative message on the front-end for logged-in admins, which displays on posts/pages where unsupported shortcodes are being used. It's intended to inform admins about the Basic version's limitations in case they skipped the documentation, and highlight the Premium version's feature set in case it would be more appropriate for their requirements. [Basic only]
+
+* Added a check to make sure jQuery isn't being deregistered in a user's theme, as it will break Fancybox. This regex runs on the plugins page and Optimizer's settings page in the admin, and looks for variants of "wp_deregister_script('jquery');" in the functions.php files of both the main active theme and the child theme (if present). If detected (and not re-registered with a CDN version), users are alerted via a message in the admin. [Basic and Premium]
+
+* Added a blank index.php file inside each of Optimizer's folders to prevent Google from accessing and indexing the Apache directory tree. [Basic and Premium]
 
 
 = V1.1 - 12/07/2012 =
@@ -364,8 +396,10 @@ database options.
 * Initial release on February 28th, 2012.
 
 
+
 == Upgrade Notice ==
-= Upgrade to V1.1 is recommended for several new features and improvements. =
+= Upgrade to V1.1.1 is recommended for improved security and notifications. =
+= Upgrade to V1.1.0 is recommended for several new features and improvements. =
 = Upgrade to V1.0.8 is recommended for improved compatibility with other plugins and themes. =
 = Upgrade to V1.0.7 is non-essential. Just a maintenance update. =
 = Upgrade to V1.0.6 is recommended for a number of coding improvements. =

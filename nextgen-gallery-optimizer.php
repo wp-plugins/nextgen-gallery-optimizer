@@ -3,7 +3,7 @@
 Plugin Name: NextGEN Gallery Optimizer
 Description: <strong><a href="http://www.markstechnologynews.com/nextgen-gallery-optimizer-premium/?ref=plugins">*** UPGRADE TO NEXTGEN GALLERY OPTIMIZER PREMIUM ***</a> to add support for ALL TEN NextGEN shortcodes and more!</strong>   NextGEN Gallery Optimizer improves your site's page load speed by ensuring NextGEN Gallery's scripts and styles ONLY load on posts with the [nggallery id=x] shortcode. Also includes and integrates the fantastic Fancybox lightbox script, so now you can have gorgeous galleries AND a speedy site!
 Author: Mark Jeldi
-Version: 1.1
+Version: 1.1.1
 
 Author URI: http://www.markstechnologynews.com
 
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 $nggo_options = get_option('nextgen_optimizer_settings');
 $nggo_nextgen_options = get_option('ngg_options');
 
-define( 'NGGO_VERSION', '1.1' );
+define( 'NGGO_VERSION', '1.1.1' );
 define( 'NGGO_FANCYBOX_VERSION', '1.3.4' );
 define( 'NGGO_JQUERY_VERSION', '1.7.2' );
 
@@ -53,18 +53,18 @@ include('nextgen-optimizer-scripts-and-styles.php'); // script and stylesheet in
 **************************************************/
 
 // call our stylesheet
-function nextgen_optimizer_load_styles() {
+function nggo_load_styles() {
 	wp_enqueue_style('nextgen_optimizer_styles', plugin_dir_url( __FILE__ ) . 'css/nextgen-optimizer-options.css');
 }
 
 // attach the above wp_enqueue_style so our stylesheet only loads on the options page we're building
-function nextgen_optimizer_add_options_page() {
-	$nextgen_optimizer_options_page = add_options_page('NextGEN Gallery Optimizer', 'NextGEN Optimizer', 'manage_options', 'nextgen_optimizer_options', 'nextgen_optimizer_options_page');
-	add_action('admin_print_styles-' . $nextgen_optimizer_options_page, 'nextgen_optimizer_load_styles');
+function nggo_add_options_page() {
+	$nggo_options_page = add_options_page('NextGEN Gallery Optimizer', 'NextGEN Optimizer', 'manage_options', 'nextgen_optimizer_options', 'nextgen_optimizer_options_page');
+	add_action('admin_print_styles-' . $nggo_options_page, 'nggo_load_styles');
 }
 
 // create options page complete with attached css file and link in admin menu. 
-add_action('admin_menu', 'nextgen_optimizer_add_options_page');
+add_action('admin_menu', 'nggo_add_options_page');
 
 
 
@@ -73,10 +73,10 @@ add_action('admin_menu', 'nextgen_optimizer_add_options_page');
 **************************************************/
 
 // create our settings in the options table
-function nextgen_optimizer_register_settings() {
+function nggo_register_settings() {
 	register_setting('nextgen_optimizer_settings_group', 'nextgen_optimizer_settings');
 }
-add_action('admin_init', 'nextgen_optimizer_register_settings');
+add_action('admin_init', 'nggo_register_settings');
 
 
 
@@ -84,16 +84,16 @@ add_action('admin_init', 'nextgen_optimizer_register_settings');
 * add settings & donate links on plugins page
 **************************************************/
 
-function nextgen_optimizer_settings_link($links, $file) {
+function nggo_settings_link($links, $file) {
 	if ($file == plugin_basename(__FILE__)) {
 		$links[] = '<a href="'.admin_url('options-general.php?page=nextgen_optimizer_options').'">Settings</a>';
-		$links[] = '<a href="http://wordpress.org/tags/nextgen-gallery-optimizer?forum_id=10">Support Forum</a>';
+		$links[] = '<a href="http://wordpress.org/support/plugin/nextgen-gallery-optimizer">Support Forum</a>';
 		$links[] = '<a href="http://wordpress.org/extend/plugins/nextgen-gallery-optimizer">Rate this plugin</a>';
 		$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGS3ANA29BJ2W">Donate</a>';
 	}
 	return $links;
 }
-add_filter('plugin_row_meta', 'nextgen_optimizer_settings_link', 10, 2);
+add_filter('plugin_row_meta', 'nggo_settings_link', 10, 2);
 
 
 
@@ -379,3 +379,86 @@ function nggo_fancybox_auto_uninstall() {
 	}
 }
 register_deactivation_hook(__FILE__, 'nggo_fancybox_auto_uninstall');
+
+
+
+/********************************************************************************
+* Check to make sure jQuery isn't deregistered.
+* We'll run a regex on the functions.php files for "wp_deregister_script('jquery');"
+* If detected (and not re-registered with a CDN version), we'll alert the user via an admin message.
+********************************************************************************/
+
+function nggo_check_for_deregister_jquery_regex() {
+
+	global $nggo_child_functions_path;
+	global $nggo_parent_functions_path;
+	global $pagenow;
+	
+	if ($pagenow == 'plugins.php' || isset($_GET['page']) && $_GET['page'] == 'nextgen_optimizer_options') {
+	
+		$nggo_child_functions_path = get_stylesheet_directory() . '/functions.php'; // looks for a child theme first, and if not in use, returns path to parent theme.		
+		$nggo_parent_functions_path = get_template_directory() . '/functions.php'; // gets file path to parent theme
+		
+		$nggo_functions_pattern = '/wp\_(deregister|register|enqueue)\_script\s*\(\s*(\'|"|\s*)jquery(\'|"|\s*)/';
+
+		
+		// check the child theme's functions.php (if in use and if file exists)
+		// if no child theme is in use, checks the parent theme's functions.php instead
+		
+		if (file_exists($nggo_child_functions_path)) {
+			$nggo_functions_file = file_get_contents($nggo_child_functions_path);
+		
+			if (preg_match_all($nggo_functions_pattern, $nggo_functions_file, $nggo_functions_matches)
+			&& array_key_exists(1, $nggo_functions_matches)
+			&& !in_array('register', $nggo_functions_matches[1])
+			&& !in_array('enqueue', $nggo_functions_matches[1])) {
+				
+				add_action( 'admin_notices', 'nggo_check_for_deregister_jquery_child_message' );
+	
+			}
+		}
+		
+		// check the parent theme's functions.php
+		// only runs if get_stylesheet_directory() did not return the parent theme's path above
+		
+		if (file_exists($nggo_parent_functions_path) && ($nggo_parent_functions_path != $nggo_child_functions_path)) {
+			$nggo_functions_file = file_get_contents($nggo_parent_functions_path);
+							
+			if (preg_match_all($nggo_functions_pattern, $nggo_functions_file, $nggo_functions_matches)
+			&& array_key_exists(1, $nggo_functions_matches)
+			&& !in_array('register', $nggo_functions_matches[1])
+			&& !in_array('enqueue', $nggo_functions_matches[1])) {
+				
+				add_action( 'admin_notices', 'nggo_check_for_deregister_jquery_parent_message' );
+	
+			}
+		}
+	}
+}
+add_action('admin_init', 'nggo_check_for_deregister_jquery_regex');
+
+
+function nggo_check_for_deregister_jquery_child_message() {
+	
+	global $nggo_child_functions_path;
+	global $pagenow;
+	
+	if ($pagenow == 'plugins.php' || isset($_GET['page']) && $_GET['page'] == 'nextgen_optimizer_options') {
+		
+		echo '<div class="error"><p>NextGEN Gallery Optimizer:<br />Your theme appears to be deregistering jQuery, which may prevent the Fancybox lightbox from functioning.<br />To resolve this issue, please remove <b>wp_deregister_script(\'jquery\');</b> from <i>' . $nggo_child_functions_path . '</i>.</p></div>';
+
+	}
+}
+
+
+function nggo_check_for_deregister_jquery_parent_message() {
+	
+	global $nggo_parent_functions_path;
+	global $pagenow;
+	
+	if ($pagenow == 'plugins.php' || isset($_GET['page']) && $_GET['page'] == 'nextgen_optimizer_options') {
+		
+		echo '<div class="error"><p>NextGEN Gallery Optimizer:<br />Your theme appears to be deregistering jQuery, which may prevent the Fancybox lightbox from functioning.<br />To resolve this issue, please remove <b>wp_deregister_script(\'jquery\');</b> from <i>' . $nggo_parent_functions_path . '</i>.</p></div>';
+
+	}
+}
