@@ -195,7 +195,7 @@ function nggo_check_unsupported_shortcodes() {
 		
 							if (isset($_GET['show']) && $_GET['show'] == 'slide') {
 		
-								$nggo_unsupported_shortcodes[10] = 'the <span style="font-weight:bold;">&#91;Show&nbsp;as&nbsp;slideshow&#93;</span> text link';
+								$nggo_unsupported_shortcodes[10] = 'the <span style="font-weight:bold;">&#91;Show&nbsp;as&nbsp;slideshow&#93;</span> link';
 								$nggo_slideshow_message_text = "slideshows,";
 								$nggo_slideshow_message_tip = "show";
 								add_filter ('the_content', 'nggo_unsupported_shortcode_message');
@@ -222,13 +222,25 @@ function nggo_unsupported_shortcode_message($content) {
 
 	$nggo_unsupported_message = '<div style="font-family:HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,sans-serif; letter-spacing:normal; color: #444; background: #F4F4F4 url(' . plugins_url( 'images/bg.gif' , __FILE__) . '); text-align:left; padding:15px 20px 20px; border:1px solid #ddd; margin: 20px 0;">';
 	$nggo_unsupported_message.= '<div style="width:32px; height:32px; float:left; margin: 0 15px 0 0; background: url(' . plugins_url( 'images/plugins-icon.png' , __FILE__) . ') no-repeat; _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=' . plugins_url( 'images/plugins-icon.png' , __FILE__) . ', sizingMethod=\'crop\');" src="' . plugins_url( 'images/plugins-icon.png' , __FILE__) . '">&nbsp;</div><p style="font-size:18px; line-height:20px; padding:5px 0 20px; margin:0; clear:none;">NextGEN Gallery Optimizer Admin Notification</p>';
-	$nggo_unsupported_message.= '<p style="font-size:14px; line-height:18px; padding:0; margin:0;">This original, basic version of the NextGEN Gallery Optimizer plugin currently only supports the popular <span style="font-weight:bold;">&#91;nggallery&nbsp;id=x&#93;</span> shortcode.</p>';
+	
+	// shortcode opening paragraph
+	if ($nggo_slideshow_message_tip != 'show') {
+	$nggo_unsupported_message.= '<p style="font-size:14px; line-height:18px; padding:0; margin:0;">This original, Basic version of the NextGEN Gallery Optimizer plugin currently only supports the popular <span style="font-weight:bold;">&#91;nggallery&nbsp;id=x&#93;</span> shortcode.</p>';
+	}	
+
+	// show as slideshow opening paragraph
+	if ($nggo_slideshow_message_tip == 'show') {
+	$nggo_unsupported_message.= '<p style="font-size:14px; line-height:18px; padding:0; margin:0;">This original, Basic version of the NextGEN Gallery Optimizer plugin does not currently support the <span style="font-weight:bold;">&#91;Show&nbsp;as&nbsp;slideshow&#93;</span> text link.</p>';
+	}
+	
 	$nggo_unsupported_message.= '<p style="font-size:14px; line-height:18px; padding:0; margin:15px 0 0 0;">If you\'d like to use ' . $nggo_unsupported_shortcodes_list . ' with Optimizer, please consider upgrading to <b><a style="color:#333; font-weight:bold; text-decoration:underline;" href="http://www.markstechnologynews.com/nextgen-gallery-optimizer-premium/?ref=message">Optimizer Premium</a></b> - which adds support for ' . $nggo_slideshow_message_text . ' ALL TEN NextGEN shortcodes and much, much more.</p>';
 
+	// show as slideshow deactivation tip
 	if ($nggo_slideshow_message_tip == 'show') {
 	$nggo_unsupported_message.= '<p style="font-size:12px; line-height:18px; padding:0; margin:15px 0 0 0;">Alternatively, if you\'d like to hide the &#91;Show&nbsp;as&nbsp;slideshow&#93; link from your galleries, simply navigate to Gallery --> Options --> Gallery and uncheck the "Integrate slideshow" option.</p>';
 	}
 
+	// links to documentation and support
 	$nggo_unsupported_message.= '<p style="font-size:12px; line-height:18px; padding:0; margin:15px 0 0 0;"><a style="color:#333; text-decoration:underline;" href="http://wordpress.org/extend/plugins/nextgen-gallery-optimizer/">Documentation</a> | <a style="color:#333; text-decoration:underline;" href="http://wordpress.org/extend/plugins/nextgen-gallery-optimizer/installation/">Installation</a> | <a style="color:#333; text-decoration:underline;" href="http://wordpress.org/support/plugin/nextgen-gallery-optimizer">Support Forum</a> | <a style="color:#333; text-decoration:underline;" href="mailto:mark@markstechnologynews.com">Contact</a> | <a style="color:#333; text-decoration:underline;" href="http://www.markstechnologynews.com/nextgen-gallery-optimizer-premium/?ref=message">Get the Premium version</a></p>';
 	$nggo_unsupported_message.= '</div>';
 	

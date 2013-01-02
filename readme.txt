@@ -5,8 +5,8 @@ Author URI: http://www.markstechnologynews.com
 Plugin URI: http://www.markstechnologynews.com/2012/02/nextgen-gallery-optimizer-wordpress-plugin-helps-boost-your-sites-page-load-speed.html
 Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.1.2
-Tested up to: 3.4.2
-Stable tag: 1.1.1
+Tested up to: 3.5
+Stable tag: 1.1.2
 License: GPLv2
 
 Improves your site's page load speed by preventing NextGEN's scripts & css from loading on posts without galleries.
@@ -35,6 +35,15 @@ If you have any questions, suggestions, ideas or feedback, please email me at ma
 1. Improves your WordPress page load speed!
 2. Prevents NextGEN's scripts and styles from loading on posts without galleries.
 3. Lets you easily install the Fancybox lightbox to display your images in style.
+
+
+= NEW in Version 1.1.2: =
+1. Tested compatible with WordPress 3.5 (Basic and Premium)
+2. Latest Google-hosted jQuery 1.8.3 to match new WP version (Basic and Premium)
+3. New admin notifications to assist with NextGEN installation (Basic and Premium)
+4. Improvements to Optimizer's automatic Fancybox installation (Basic and Premium)
+
+This release brings us up to date with WordPress 3.5, and features a number of additions and refinements to improve user experience. These include new admin notifications to assist users who don't have the required NextGEN Gallery plugin installed and activated, new step-by-step installation instructions via the WordPress admin (to ensure the correct file ownership and permissions are set), a streamlined settings page, and improvements to Optimizer's automatic Fancybox installation.
 
 
 = NEW in Version 1.1.1: =
@@ -128,11 +137,20 @@ It fixes the "Fancybox not working in IE6 & IE8" issue by automatically updating
 
 == Installation ==
 
-To install NextGEN Gallery Optimizer:
+= Install NextGEN Gallery Optimizer: =
 
-1. Upload `nextgen-gallery-optimizer` to the `/wp-content/plugins/` directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Proceed to the plugin settings page to complete installation.
+1. Download NextGEN Gallery Optimizer to your computer
+2. Log into your WordPress admin
+3. Click **Plugins --> Add New**
+4. Click **Upload** (in the header)
+5. Search your computer for **nextgen-gallery-optimizer.zip**
+6. Click **Install Now**
+7. Click **Activate Plugin**
+8. Click **Settings --> NextGEN Optimizer** to complete installation.
+
+* Note: If your computer automatically unzips your download, you'll need to re-compress it first.
+* On Mac OSX: Ctrl+click the plugin folder --> Compress.
+* On Windows: Right-click the plugin folder --> Send To --> Compressed (zipped) Folder.
 
 
 = How do I set up a gallery? =
@@ -242,6 +260,8 @@ Eg. http://sitename.com/wp-content/uploads/imagerotator/imagerotator.swf
 
 Click "Save Changes" when you're done and you'll be all up and running.
 
+**UPDATE: JW Image Rotator now comes bundled with NextGEN Gallery v1.9.9 and above, and requires no manual installation.**
+
 = Why isn't Optimizer Premium detecting my Album gallery pages or the [Show as slideshow] links? =
 
 This issue is likely caused by the "Activate permalinks" option at Gallery --> Options --> General Options, which changes NextGEN's URL structure for things such as the "Show as slideshow" and "Show picture list" links, as well as navigation through your Album pages. 
@@ -258,6 +278,25 @@ I'm currently working on a way to target these permalink URLs for a future versi
 
 
 == Changelog ==
+
+= V1.1.2 - 02/01/2013 =
+
+* Added new checks to make sure NextGEN Gallery is both installed and activated. A new admin notification accompanies this to assist new users with downloading, activating and setting up NextGEN.
+
+* Major improvements to Optimizer's automatic Fancybox installation. 1. Checks to make sure NextGEN Gallery is actually installed. 2. Automatically resets if the NextGEN database settings are deleted (so it can run again if reinstalled). 3. Now deactivates and restores former NextGEN Effects values when Optimizer's Fancybox option is switched off (as well as on plugin deactivation).
+
+* Improved our "can't write css file" admin notification to include a small "how to" guide on changing file permissions, to assist users who are new to managing self-hosted sites.
+
+* Replaced all upload instructions with a step-by-step guide to installing Optimizer via the WordPress admin. This method of installation is much faster than FTP, largely automated and most importantly, ensures the correct file ownership and permissions are set.
+
+* Changed Google-hosted jQuery to version 1.8.3 to match the version now included in WordPress 3.5.
+
+* Updated the Basic version's messaging in regards to the [Show as slideshow] text link for greater clarity.
+
+* Removed the donate and hire me boxes from the Basic version's settings page, as some users had expressed annoyance.
+
+* Explicitly defined database settings variables as globals so they're able to be used inside functions called on register_activation_hook().
+
 
 = V1.1.1 - 08/11/2012 =
 
@@ -398,6 +437,7 @@ database options.
 
 
 == Upgrade Notice ==
+= Upgrade to V1.1.2 is recommended for a number of user experience improvements. =
 = Upgrade to V1.1.1 is recommended for improved security and notifications. =
 = Upgrade to V1.1.0 is recommended for several new features and improvements. =
 = Upgrade to V1.0.8 is recommended for improved compatibility with other plugins and themes. =

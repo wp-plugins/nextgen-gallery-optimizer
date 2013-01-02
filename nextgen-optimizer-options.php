@@ -159,33 +159,11 @@ ob_start();
 
 	<!-- hidden fields for persistent settings in options array -->
 	<input id="nextgen_optimizer_settings[version]" name="nextgen_optimizer_settings[version]" type="hidden" value="<?php echo $nggo_options['version']; ?>"/>
-	<input id="nextgen_optimizer_settings[original_nextgen_thumbEffect]" name="nextgen_optimizer_settings[original_nextgen_thumbEffect]" type="hidden" value="<?php echo $nggo_options['auto_fancybox_install']; ?>"/>	
+	<input id="nextgen_optimizer_settings[auto_fancybox_install]" name="nextgen_optimizer_settings[auto_fancybox_install]" type="hidden" value="<?php echo $nggo_options['auto_fancybox_install']; ?>"/>	
 	<input id="nextgen_optimizer_settings[original_nextgen_thumbEffect]" name="nextgen_optimizer_settings[original_nextgen_thumbEffect]" type="hidden" value="<?php echo $nggo_options['original_nextgen_thumbEffect']; ?>"/>
 	<input id="nextgen_optimizer_settings[original_nextgen_thumbCode]" name="nextgen_optimizer_settings[original_nextgen_thumbCode]" type="hidden" value="<?php echo htmlspecialchars($nggo_options['original_nextgen_thumbCode']); ?>"/>
 	
 </form>
-
-		
-	<div class="nggo_box">
-		<div class="nggo_inner">
-			<h2>Donate!</h2>
-			If you would like to support further development of this plugin, or the creation of other optimization plugins...please consider a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGS3ANA29BJ2W">donation</a>!<br />
-			It would be greatly appreciated...as would a <a href="http://wordpress.org/extend/plugins/nextgen-gallery-optimizer">good rating</a> on WordPress.org.
-		</div>
-		<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGS3ANA29BJ2W">
-		<?php echo '<img src="' . plugins_url( 'images/donate-button.gif' , __FILE__) . '" width="92" height="26"> '; ?></a>
-	</div>
-
-
-	<div class="nggo_box">
-		<div class="nggo_inner">
-			<h2>Hire me!</h2>
-			Need to optimize your site further?<br />
-			<a href="http://www.peopleperhour.com/freelancers/mark_j/wordpress_customisation_and_optimisation/143719">Hire me</a> and consider it done!
-		</div>
-		<a href="http://www.peopleperhour.com/freelancers/mark_j/wordpress_customisation_and_optimisation/143719">
-		<?php echo '<img src="' . plugins_url( 'images/hire-button.gif' , __FILE__) . '" width="92" height="26"> '; ?></a>
-	</div>
 
 
 	<div class="nggo_box">
