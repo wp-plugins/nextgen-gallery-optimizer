@@ -4,7 +4,7 @@ Author URI: http://www.nextgengalleryoptimizer.com/
 Plugin URI: http://www.nextgengalleryoptimizer.com/
 Tags: nextgen gallery, nextgen, nextgen gallery optimizer, nextgen gallery plugins, nextgen gallery addons, nextgen gallery fancybox, fancybox, fancybox plugin, fancybox lightbox, fancybox for wordpress, wordpress fancybox, wordpress optimization
 Requires at least: 3.8
-Tested up to: 4.0.1
+Tested up to: 4.1
 Stable tag: 2.0
 License: GPLv2
 
