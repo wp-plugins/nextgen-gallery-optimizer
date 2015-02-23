@@ -23,7 +23,6 @@ Our broad, existing compatibility with NextGEN (v2.0.0 to v2.0.66.33), NextGEN L
 
 Apologies in advance for any inconvenience, and thank you for your patience.  
 Mark.
-= ---------------------------------------------------------------------------------------------- =
 
 = NextGEN Gallery Optimizer =
 
