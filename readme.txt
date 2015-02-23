@@ -12,9 +12,6 @@ The essential add-on for the NextGEN Gallery WordPress plugin.
 
 == Description ==
 
-= NextGEN Gallery Optimizer =
-
-= ---------------------------------------------------------------------------------------------- =
 **Author's note:**
 
 I'm afraid Optimizer v2.0 is ***not*** currently compatible with the ***major NextGEN Gallery (v2.0.7x) update***, released on the 19th of February 2015.
@@ -27,6 +24,9 @@ Our broad, existing compatibility with NextGEN (v2.0.0 to v2.0.66.33), NextGEN L
 Apologies in advance for any inconvenience, and thank you for your patience.  
 Mark.
 = ---------------------------------------------------------------------------------------------- =
+
+= NextGEN Gallery Optimizer =
+
 NextGEN Gallery Optimizer improves your site's page load speed by preventing NextGEN's scripts & stylesheets from loading on pages without galleries.
 
 Additionally...
