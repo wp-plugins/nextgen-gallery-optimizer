@@ -15,7 +15,11 @@ The essential add-on for the NextGEN Gallery WordPress plugin.
 = NextGEN Gallery Optimizer =
 
 = ----------------------------------------------------------------- =
-**Author's note:** I'm afraid Optimizer v2.0 is ***not*** currently compatible with the ***major NextGEN Gallery (v2.0.7x) update***, released on the 19th of February 2015. As key parts of the NextGEN v2.0 API were completely removed in this update (without any graceful deprecation, or backwards-compatibility in place), Optimizer (and likely many other NextGEN extensions) will display fatal errors, and not function correctly with this release, until all affected integration components are rewritten.
+**Author's note:**
+
+I'm afraid Optimizer v2.0 is ***not*** currently compatible with the ***major NextGEN Gallery (v2.0.7x) update***, released on the 19th of February 2015.
+
+As key parts of the NextGEN v2.0 API were completely removed in this update (without any graceful deprecation, or backwards-compatibility in place), Optimizer (and likely many other NextGEN extensions) will display fatal errors, and not function correctly with this release, until all affected integration components are rewritten.
 
 I'm currently working on compatibility with NextGEN v2.0.7x (and hope to have an update ready soon), but in the meantime, if you've already updated to NextGEN v2.0.7x, I would recommend rolling-back to the immediately-preceding stable release of NextGEN v2.0.66.33.
 Our broad, existing compatibility with NextGEN (v2.0.0 to v2.0.66.33), NextGEN Legacy (v1.6.2 to v1.9.13) and NextCellent Gallery remains unaffected.  
@@ -23,7 +27,6 @@ Our broad, existing compatibility with NextGEN (v2.0.0 to v2.0.66.33), NextGEN L
 Apologies in advance for any inconvenience, and thank you for your patience.  
 Mark.
 = ----------------------------------------------------------------- =
-
 NextGEN Gallery Optimizer improves your site's page load speed by preventing NextGEN's scripts & stylesheets from loading on pages without galleries.
 
 Additionally...
